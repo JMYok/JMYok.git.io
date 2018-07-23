@@ -7,7 +7,7 @@
 
     
 
-    <title>Tag: Hexo | BobJiang</title>
+    <title>Tag: hexo | BobJiang</title>
     <meta name="author" content="BobJiang" />
     <meta name="version" content="1.0.0" />
     <meta name="keywords" content="" />
@@ -40,18 +40,6 @@
         
         
         
-        <li class="nav-item">
-            <a class="nav-link" href="/categories/solve_problem">技术之坑</a>
-        </li>
-        
-        
-        
-        <li class="nav-item">
-            <a class="nav-link" href="/categories/copy">复制粘贴</a>
-        </li>
-        
-        
-        
         <li class="nav-item nav-item-tag">
             <a id="nav-tag" class="nav-link" href="#">标签</a>
             <div id="nav-tags" class="nav-tag-wrap">
@@ -63,7 +51,7 @@
         <span class="vm">Tags</span>
     </h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/">Laravel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随记/">随记</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/">Laravel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
     </div>
   </div>
 
@@ -74,13 +62,19 @@
         
         
         <li class="nav-item">
-            <a class="nav-link" href="/archives">博客日志</a>
+            <a class="nav-link" href="/categories/problem">追求卓越</a>
         </li>
         
         
         
         <li class="nav-item">
-            <a class="nav-link" href="/about">关于</a>
+            <a class="nav-link" href="/categories/copy">复制粘贴</a>
+        </li>
+        
+        
+        
+        <li class="nav-item">
+            <a class="nav-link" href="/archives">博客日志</a>
         </li>
         
         
@@ -136,21 +130,21 @@
     <header class="article-header">
         
         <h1 itemprop="name">
-            <a href="/2017/10/07/第一篇微博/">第一篇博客（关于hexo搭建）</a>
+            <a href="/2018/07/23/hexo搭建博客/">hexo搭建博客</a>
         </h1>
         
         <div class="article-meta clearfix">
-            <a class="article-date" href="/2017/10/07/第一篇微博/">
+            <a class="article-date" href="/2018/07/23/hexo搭建博客/">
     
     <i class="icon-calendar"></i>
     
-    <time datetime="2017-10-06T16:10:59.000Z" itemprop="datePublished">2017-10-07</time>
+    <time datetime="2018-07-23T07:05:36.000Z" itemprop="datePublished">2018-07-23</time>
 </a>
 
             
 <div class="article-tag-list">
     <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/Hexo/">Hexo</a>, <a class="article-tag-link" href="/tags/随记/">随记</a>
+    <a class="article-tag-link" href="/tags/hexo/">hexo</a>
 </div>
 
 
@@ -159,11 +153,17 @@
     
     <section class="article-body markdown-body">
         
-        <p><strong>终于用hexo+github pages搭建好了这个个人博客并且更换spfk主题，目前还有很多用法没有搞清楚，继续摸索~</strong></p>
+        <h1 id="hexo精简搭建流程及问题"><a href="#hexo精简搭建流程及问题" class="headerlink" title=" hexo精简搭建流程及问题 "></a><em> hexo精简搭建流程及问题 </em></h1><blockquote>
+<blockquote>
 <ul>
-<li>搭建过程中发现几个注意点：<br>  1、hexo init必须和hexo install挨着使用<br>  2、博客的微博数不能为0，不然图片加载不出来并且自动生成HelloWorld.md。<br>  3、直接在文件夹下改文件名字是不行的，需要在文件title里更改。<br>  4、编辑md时文本开头一定一定不要有空格，不然MarkDown语法无法解释。<br>  5、<strong>安装Hexo时，用npm install hexo-cli -g 安装失败，error:build:hightlight error.<br>  解决：在CMD上运行。</strong>(若速度过慢用淘宝镜像cnpm代替npm，之后运行npm install -g cnpm –registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a> )</li>
-<li>现在存在的问题：<br>  1、spfk主题分类以及标签如何使用（已解决）<br>  2、已经删除的主题文件夹pulic下的background里面的图片明明已经删除，为什么执行一个hexo g 又全部重新生成了？？（JS的奥秘？？）<br>  3、hexo spfk主题中文本背景颜色如何更改？(已解决）<br>  4、hexo spfk主题中MarkDown语法无法解析。（已解决）</li>
+<li>安裝 *  </li>
 </ul>
+<ul>
+<li>首先电脑上需要保证有Node.js以及Git</li>
+<li>执行npm install -g hexo (-g参数代表的是全局安裝)</li>
+</ul>
+</blockquote>
+</blockquote>
 
         
     </section>
