@@ -7,15 +7,11 @@
 
     
 
-    <title>Laravel开发中问题 | BobJiang</title>
+    <title>catorgries | BobJiang</title>
     <meta name="author" content="BobJiang" />
     <meta name="version" content="1.0.0" />
     <meta name="keywords" content="" />
-    <meta name="description" content="(持续更新)
-
-Use of undefined constant users - assumed ‘users’解决：模型中表名未加单引号。protected $table = ‘users’;
-
-SQLSTATE[HY000]: General error: 1364 Field ‘password’ doesn’t have a default value解决： protected $fillable = [   ‘name’,’email’,’password,’ ];   (可填入字段" />
+    <meta name="description" content="" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
     <meta name="baidu-site-verification" content="F0CXvmUgA9" />
@@ -100,8 +96,6 @@ SQLSTATE[HY000]: General error: 1364 Field ‘password’ doesn’t have a defau
 
         
         
-        
-        
 
         
         <div class="author-meta">
@@ -141,65 +135,28 @@ SQLSTATE[HY000]: General error: 1364 Field ‘password’ doesn’t have a defau
     <header class="article-header">
         
         <h1 itemprop="name">
-            Laravel开发中问题
+            catorgries
         </h1>
         
         <div class="article-meta clearfix">
-            <a class="article-date" href="/2017/10/07/Laravel开发中问题/">
+            <a class="article-date" href="/catorgries/index.html">
     
     <i class="icon-calendar"></i>
     
-    <time datetime="2017-10-06T20:14:33.000Z" itemprop="datePublished">2017-10-07</time>
+    <time datetime="2018-07-23T06:45:04.000Z" itemprop="datePublished">2018-07-23</time>
 </a>
 
             
-<div class="article-tag-list">
-    <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/Laravel/">Laravel</a>
-</div>
-
 
         </div>
     </header>
     
     <section class="article-body markdown-body">
         
-        <p>(持续更新)</p>
-<ol>
-<li><p><strong>Use of undefined constant users - assumed ‘users’</strong><br>解决：<br>模型中表名未加单引号。<br>protected $table = ‘users’;</p>
-</li>
-<li><p><strong>SQLSTATE[HY000]: General error: 1364 Field ‘password’ doesn’t have a default value</strong><br>解决： protected $fillable = [<br>   ‘name’,’email’,’password,’<br> ];   (可填入字段错误的写入逗号)</p>
-</li>
-<li><p><strong>Type error: Argument 1 passed to Illuminate\Auth\EloquentUserProvider::validateCredentials() must be an instance of Illuminate\Contracts\Auth\Authenticatable, instance of App\Models\User given, called in /home/vagrant/Code/weibo2/vendor/laravel/framework/src/Illuminate/Auth/SessionGuard.php on line 381</strong><br>解决：<br>新创建的User类继承Model继承错误，应该继承Authenticatable，按照原本框架自带User更改即可，新建模型时需注意。</p>
-</li>
-</ol>
-
+        
         
     </section>
 </article>
-
-
-
-<div class="comments">
-    <div id="disqus_thread">
-        <p class="comment-tips">国内查看评论需要代理~</p>
-    </div>
-    <script>
-    window.disqus_config = function () {
-        this.language = 'zh';
-        this.page.url = 'http://yoursite.com/2017/10/07/Laravel开发中问题/';
-        this.page.title = 'Laravel开发中问题';
-        this.page.identifier = '2017/10/07/Laravel开发中问题/';
-    };
-    (function() { // DON'T EDIT BELOW THIS LINE
-        var d = document, s = d.createElement('script');
-        s.src = 'https://name.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
 
 </div>
         <footer class="footer">
@@ -212,8 +169,6 @@ SQLSTATE[HY000]: General error: 1364 Field ‘password’ doesn’t have a defau
     </div>
 
     <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.9.0/jquery.min.js"></script>
-    
-    <script type="text/javascript" src="/js/scrollspy.min.js"></script>
     
     <script type="text/javascript">
         $(function() {
@@ -235,8 +190,6 @@ SQLSTATE[HY000]: General error: 1364 Field ‘password’ doesn’t have a defau
                 nodes.navTags.removeClass('tag-show');
             });*/
 
-            
-            $(document.body).scrollspy({target: '#aside-inner'});
             
         });
     </script>
