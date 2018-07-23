@@ -7,7 +7,7 @@
 
     
 
-    <title>BobJiang</title>
+    <title>Tag: Hexo | BobJiang</title>
     <meta name="author" content="BobJiang" />
     <meta name="version" content="1.0.0" />
     <meta name="keywords" content="" />
@@ -34,7 +34,7 @@
 
         
         
-        <li class="nav-item active">
+        <li class="nav-item">
             <a class="nav-link" href="/">首页</a>
         </li>
         
@@ -131,98 +131,6 @@
 </header>
 
         <div id="content" class="content">
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2018/07/22/博客搭建日志/">博客搭建日志</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="/2018/07/22/博客搭建日志/">
-    
-    <i class="icon-calendar"></i>
-    
-    <time datetime="2018-07-22T10:41:21.955Z" itemprop="datePublished">2018-07-22</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/随记/">随记</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <ul>
-<li>2017.10.6：</li>
-</ul>
-<ol>
-<li>初步搭建博客</li>
-<li>完成spfk主题下载</li>
-<li>完成基本部署和设置</li>
-</ol>
-<ul>
-<li>2017.10.7:</li>
-</ul>
-<ol>
-<li>解决分类和标签问题</li>
-<li>正式开始写博客</li>
-</ol>
-
-        
-    </section>
-</article>
-
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2017/10/07/Laravel开发中问题/">Laravel开发中问题</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="/2017/10/07/Laravel开发中问题/">
-    
-    <i class="icon-calendar"></i>
-    
-    <time datetime="2017-10-06T20:14:33.000Z" itemprop="datePublished">2017-10-07</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/Laravel/">Laravel</a>
-</div>
-
-
-        </div>
-    </header>
-    
-    <section class="article-body markdown-body">
-        
-        <p>(持续更新)</p>
-<ol>
-<li><p><strong>Use of undefined constant users - assumed ‘users’</strong><br>解决：<br>模型中表名未加单引号。<br>protected $table = ‘users’;</p>
-</li>
-<li><p><strong>SQLSTATE[HY000]: General error: 1364 Field ‘password’ doesn’t have a default value</strong><br>解决： protected $fillable = [<br>   ‘name’,’email’,’password,’<br> ];   (可填入字段错误的写入逗号)</p>
-</li>
-<li><p><strong>Type error: Argument 1 passed to Illuminate\Auth\EloquentUserProvider::validateCredentials() must be an instance of Illuminate\Contracts\Auth\Authenticatable, instance of App\Models\User given, called in /home/vagrant/Code/weibo2/vendor/laravel/framework/src/Illuminate/Auth/SessionGuard.php on line 381</strong><br>解决：<br>新创建的User类继承Model继承错误，应该继承Authenticatable，按照原本框架自带User更改即可，新建模型时需注意。</p>
-</li>
-</ol>
-
-        
-    </section>
-</article>
-
-
     <article class="article" itemscope itemprop="blogPost">
     
     <header class="article-header">
