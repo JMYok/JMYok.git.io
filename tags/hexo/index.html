@@ -157,7 +157,10 @@
 <blockquote>
 <p><em>ERROR Local hexo not found in G:test</em><br><em>ERROR Try running: ‘npm install hexo –save’</em></p>
 </blockquote>
-<p><em>之后执行 <code>npm install hexo --save</code> ,出现checkingPermissions Missing错误：</em><br><img src="images/question1.jpg" alt="-4058"></p>
+<p><em>之后执行 <code>npm install hexo --save</code> ,出现checkingPermissions Missing错误：</em></p>
+<blockquote>
+<p>npm WARN checkPermissions Missing write access to C:\Users\liuyg\AppData\Roaming\npm\node_modules\vue-cli\node_modules\cliui\node_modules\wordwrap<br>npm ERR! path C:\Users\liuyg\AppData\Roaming\npm\node_modules\vue-cli\node_modules\cliui\node_modules\wordwrap</p>
+</blockquote>
 <p><em>解决：</em></p>
 <blockquote>
 <p><em>删除博客目录下的node_modules,再执行 <code>cnpm(淘宝镜像)</code> 重新下载。</em><br><em>执行 <code>hexo g</code> 成功</em></p>
