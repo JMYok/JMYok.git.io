@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>Category: copy | BobJiang</title>
+  <title>Tag: 机器学习 | BobJiang</title>
   <meta name="description" content="" />
   <meta name="keywords" content="" />
   <meta name="HandheldFriendly" content="True" />
@@ -126,7 +126,7 @@
         <div class='l_main'>
             
     <script>
-        window.subData= { title:'category : copy'}
+        window.subData= { title:'tag : 机器学习'}
     </script>
 
 
@@ -137,68 +137,34 @@
             <article class="post reveal ">
     <section class="meta">
         <h2 class="title">
-            <a href="/2018/07/23/如何建立自己的知识体系/">
+            <a href="/2018/09/29/激活函数的选择/">
                 
-                    如何建立自己的知识体系
+                    激活函数的选择
                 
             </a>
         </h2>
         <time>
-            2018-07-23
+            2018-09-29
         </time>
         
     
     <div class='cats'>
-        <a href="/categories/copy/">copy</a>
+        
     </div>
 
 
     </section>
 
     <section class="article typo">
-        <h3 id="一、如何做笔记"><a href="#一、如何做笔记" class="headerlink" title="一、如何做笔记"></a><em>一、如何做笔记</em></h3><p><em>能把书中的框架和重点都展现出来或者你用一页纸能把重点说清楚，就算合格。</em></p>
-<blockquote>
-<ol>
-<li>说理清结构，归纳重点。 </li>
-<li>舍弃对自己无用的部分， </li>
-<li>按自己的理解进行整理,有时会把导图按照7W3H的方式从新做一个思维导图 </li>
-<li>用自己的话从新表达出来， </li>
-<li>是实践，然后根据结果进行调整和改进。不断重复这几步 </li>
-</ol>
-</blockquote>
-<h3 id="二、建立初步框架"><a href="#二、建立初步框架" class="headerlink" title="二、建立初步框架"></a><em>二、建立初步框架</em></h3><blockquote>
-<ol>
-<li>读过的书，尽可能做成笔记或导图，笔记放在OneNote里。导图放在MindManage里 </li>
-<li>针对不同的主题，建立思维导图，尽量提练重点，然后在Note或分支中加下注释或出处。 </li>
-<li>定期整理和汇总，不段调整分支和整体结构。 </li>
-<li>如果有时间的话，最好做成PPT或写文章，能把所关注的问题，用自己的话给清楚表达出来 </li>
-<li>不断重复这个过程。</li>
-</ol>
-</blockquote>
-<h3 id="三、资料补充"><a href="#三、资料补充" class="headerlink" title="三、资料补充"></a><em>三、资料补充</em></h3><blockquote>
-<p>如果学习的东西是一个专业性比较强的行业 </p>
-<ol>
-<li>还需要建立自己的专业名词字典 </li>
-<li>做资料收集工作，定期整理 </li>
-<li>针对特定大量阅读本专业的期刊杂志和相关资料，提练重点 </li>
-<li>会记录所有自己学到的东西和心得 </li>
-<li>把遇到的问题和处理办法单独记录，定期总结和分析 </li>
-</ol>
-</blockquote>
-<h3 id="四、其他"><a href="#四、其他" class="headerlink" title="四、其他"></a><em>四、其他</em></h3><blockquote>
-<p>当你完全按照这种方式，针对某方面积累几个月或一、二年，基本上可以冒充一下专家，而且业内人很难挑出毛病。<br>上面所的说东西比较宏观，还有很多东西没有说到。比如目标的制定，建立或加入圈子，合作性学习、更有效的实践、辅助技能的锻炼、资料搜索、分类、重复阅读、阅读技巧、有效的记录和表达。<br>实际上对于建立一个知识体系最快最有效的办法，高端访谈和顶级专家的培训，但这二点对于普通人来说基本上无法实现。不过可以折中一下，多请一些业内的专家吃饭，海聊，效果也很不错。</p>
-</blockquote>
-<p><em>当你自己已经建立一个成体系的框架，总结出不同方法的优缺点，你可以根据自己的情况进行调整。你再接触同类的资料，可以快速忽略雷同的部分，直接关注问题的核心，这时可以节省大量的时间。对于学习方法和时间管理这类通用技能，越早建立一个系统越好，给自己带来的回报越大。当积累到一定程度会从量变产生质变。</em></p>
-<blockquote>
-<p>原博文：<a href="http://www.read.org.cn/html/1336-build-your-own-knowledge-system.html" target="_blank" rel="noopener">http://www.read.org.cn/html/1336-build-your-own-knowledge-system.html</a></p>
-</blockquote>
+        <p>几种不同的激活函数g(x)：<br><img src="test/activation1.jpg" alt="图1"><br><img src="test/activation2.jpg" alt="图2"></p>
+<p>激活函数的选择：<br>sigmoid函数和tanh函数比较：<br>隐藏层：tanh函数的表现要好于sigmoid函数，因为tanh取值范围为[−1,+1]，输出分布在0值的附近，均值为0，从隐藏层到输出层数据起到了归一化（均值为0）的效果。<br>输出层：对于二分类任务的输出取值为{0,1}，故一般会选择sigmoid函数。<br>然而sigmoid和tanh函数在当|z|很大的时候，梯度会很小，在依据梯度的算法中，更新在后期会变得很慢。在实际应用中，要使|z|尽可能的落在0值附近。<br>ReLU弥补了前两者的缺陷，当z&gt;0时，梯度始终为1，从而提高神经网络基于梯度算法的运算速度。然而当z&lt;0时，梯度一直为0，但是实际的运用中，该缺陷的影响不是很大。<br>Leaky ReLU保证在z&lt;0的时候，梯度仍然不为0。<br>在选择激活函数的时候，如果在不知道该选什么的时候就选择ReLU，当然也没有固定答案，要依据实际问题在交叉验证集合中进行验证分析。</p>
 
         
 
         
             <div class="full-width auto-padding tags">
                 
-                    <a href="/tags/学习能力/"><i class="fa fa-tag fa-fw"></i>&nbsp;学习能力</a>
+                    <a href="/tags/机器学习/"><i class="fa fa-tag fa-fw"></i>&nbsp;机器学习</a>
                 
             </div>
         
@@ -304,7 +270,7 @@
     <section class='m_widget tagcloud'>
         <div class="header"><i class="fa fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
         <div class='content'>
-            <a href="/tags/Laravel/" style="font-size: 14px; color: #999">Laravel</a> <a href="/tags/hexo/" style="font-size: 24px; color: #555">hexo</a> <a href="/tags/学习能力/" style="font-size: 14px; color: #999">学习能力</a>
+            <a href="/tags/Laravel/" style="font-size: 14px; color: #999">Laravel</a> <a href="/tags/hexo/" style="font-size: 24px; color: #555">hexo</a> <a href="/tags/学习能力/" style="font-size: 14px; color: #999">学习能力</a> <a href="/tags/机器学习/" style="font-size: 14px; color: #999">机器学习</a>
         </div>
     </section>
 
