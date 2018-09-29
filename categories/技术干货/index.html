@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>Archives | BobJiang</title>
+  <title>Category: 技术干货 | BobJiang</title>
   <meta name="description" content="" />
   <meta name="keywords" content="" />
   <meta name="HandheldFriendly" content="True" />
@@ -125,83 +125,57 @@
     <div class='container clearfix'>
         <div class='l_main'>
             
-  <article id="archive-page" class="post article white-box">
-    <section class="archive">
-      
-            <div class="archive-item archive-year mark">
-                <h2>
-                    2018
-                </h2>
-                <hr>
-            </div>
-      
-          <div class="archive-item archive-post mark">
+    <script>
+        window.subData= { title:'category : 技术干货'}
+    </script>
+
+
+<section class="post-list">
+    
+    
+        <div class='post-wrapper'>
+            <article class="post reveal ">
+    <section class="meta">
+        <h2 class="title">
             <a href="/2018/09/29/激活函数的选择/">
-              <time>09-29</time>
-              <span class="title">
                 
                     激活函数的选择
                 
-              </span>
             </a>
-          </div>
-      
-          <div class="archive-item archive-post mark">
-            <a href="/2018/07/24/Localhexonotfound/">
-              <time>07-24</time>
-              <span class="title">
-                
-                    Localhexonotfound引起的问题
-                
-              </span>
-            </a>
-          </div>
-      
-          <div class="archive-item archive-post mark">
-            <a href="/2018/07/23/如何建立自己的知识体系/">
-              <time>07-23</time>
-              <span class="title">
-                
-                    如何建立自己的知识体系
-                
-              </span>
-            </a>
-          </div>
-      
-          <div class="archive-item archive-post mark">
-            <a href="/2018/07/23/hexo搭建博客/">
-              <time>07-23</time>
-              <span class="title">
-                
-                    hexo搭建博客
-                
-              </span>
-            </a>
-          </div>
-      
-            <div class="archive-item archive-year mark">
-                <h2>
-                    2017
-                </h2>
-                <hr>
-            </div>
-      
-          <div class="archive-item archive-post mark">
-            <a href="/2017/10/07/Laravel开发中问题/">
-              <time>10-07</time>
-              <span class="title">
-                
-                    Laravel开发中问题
-                
-              </span>
-            </a>
-          </div>
-      
+        </h2>
+        <time>
+            2018-09-29
+        </time>
+        
+    
+    <div class='cats'>
+        <a href="/categories/技术干货/">技术干货</a>
+    </div>
+
+
     </section>
-  </article>
-  <!--
-  
-    -->
+
+    <section class="article typo">
+        <p>##几种不同的激活函数g(x)：<br><img src="images/激活函数的选择/activation1.png" alt="1"></p>
+<p>##激活函数的选择：<br><img src="images/激活函数的选择/activation2.jpg" alt="2"></p>
+<p>##sigmoid函数和tanh函数比较：<br>隐藏层：tanh函数的表现要好于sigmoid函数，因为tanh取值范围为[−1,+1]，输出分布在0值的附近，均值为0，从隐藏层到输出层数据起到了归一化（均值为0）的效果。<br>输出层：对于二分类任务的输出取值为{0,1}，故一般会选择sigmoid函数。<br>然而sigmoid和tanh函数在当|z|很大的时候，梯度会很小，在依据梯度的算法中，更新在后期会变得很慢。在实际应用中，要使|z|尽可能的落在0值附近。<br>ReLU弥补了前两者的缺陷，当z&gt;0时，梯度始终为1，从而提高神经网络基于梯度算法的运算速度。然而当z&lt;0时，梯度一直为0，但是实际的运用中，该缺陷的影响不是很大。<br>Leaky ReLU保证在z&lt;0的时候，梯度仍然不为0。<br>在选择激活函数的时候，如果在不知道该选什么的时候就选择ReLU，当然也没有固定答案，要依据实际问题在交叉验证集合中进行验证分析。</p>
+
+        
+
+        
+            <div class="full-width auto-padding tags">
+                
+                    <a href="/tags/机器学习/"><i class="fa fa-tag fa-fw"></i>&nbsp;机器学习</a>
+                
+            </div>
+        
+    </section>
+</article>
+
+        </div>
+    
+</section>
+
 
 
         </div>
