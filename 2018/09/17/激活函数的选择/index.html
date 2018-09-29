@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>Localhexonotfound引起的问题 | BobJiang</title>
+  <title>激活函数的选择 | BobJiang</title>
   <meta name="description" content="" />
   <meta name="keywords" content="" />
   <meta name="HandheldFriendly" content="True" />
@@ -124,21 +124,21 @@
     <div class="l_body">
     <div class='container clearfix'>
         <div class='l_main'>
-            <article id="post-Localhexonotfound" class="post white-box article-type-post" itemscope itemprop="blogPost">
+            <article id="post-激活函数的选择" class="post white-box article-type-post" itemscope itemprop="blogPost">
     <section class='meta'>
         <h1 class="title">
             
-                Localhexonotfound引起的问题
+                激活函数的选择
             
         </h1>
         <time>
-            2018-07-24&nbsp;&nbsp;
+            2018-09-17&nbsp;&nbsp;
             <i class="fa fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
         </time>
         
     
     <div class='cats'>
-        <a href="/categories/problem/">problem</a>
+        <a href="/categories/技术干货/">技术干货</a>
     </div>
 
 
@@ -147,30 +147,16 @@
     <section class="article typo">
 
         <div class="article-entry" itemprop="articleBody">
-            <h3 id="Local-hexo-not-found-以及-Error-4058"><a href="#Local-hexo-not-found-以及-Error-4058" class="headerlink" title="Local hexo not found 以及 Error -4058"></a>Local hexo not found 以及 Error -4058</h3><p><em>之前想更换一个主题，但是因为git速度太慢失败了，其他的操作就没有了，然后就报了Local hexo not found ：</em></p>
-<blockquote>
-<p><em>ERROR Local hexo not found in G:test</em><br><em>ERROR Try running: ‘npm install hexo –save’</em></p>
-</blockquote>
-<p><em>之后执行 <code>npm install hexo --save</code> ,出现checkingPermissions Missing错误：</em></p>
-<blockquote>
-<p>npm WARN checkPermissions Missing write access to C:\Users\liuyg\AppData\Roaming\npm\node_modules\vue-cli\node_modules\cliui\node_modules\wordwrap<br>npm ERR! path C:\Users\liuyg\AppData\Roaming\npm\node_modules\vue-cli\node_modules\cliui\node_modules\wordwrap</p>
-</blockquote>
-<p><em>解决：</em></p>
-<blockquote>
-<p><em>删除博客目录下的node_modules,再执行 <code>cnpm(淘宝镜像)</code> 重新下载。</em><br><em>执行 <code>hexo g</code> 成功</em></p>
-</blockquote>
-<h3 id="hexo-s-无法运行以及访问localhost-4000无法得到页面"><a href="#hexo-s-无法运行以及访问localhost-4000无法得到页面" class="headerlink" title="hexo s 无法运行以及访问localhost:4000无法得到页面"></a>hexo s 无法运行以及访问localhost:4000无法得到页面</h3><p><em>解决：</em></p>
-<blockquote>
-<p>1.因为在Hexo 3.0 后server被单独出来了，需要安装server，安装的命令如下： <code>cnpm install hexo-server --save</code> 安装此server后再试,hexo s问题解决。<br>2.可能是由于部分包没有下载完，执行 <code>cnpm install</code> ,再次访问得到页面。</p>
-</blockquote>
-<p><em>舒服。</em></p>
+            <p>##几种不同的激活函数g(x)：<br><img src="images/激活函数的选择/activation1.png" alt="1"></p>
+<p>##激活函数的选择：<br><img src="images/激活函数的选择/activation2.jpg" alt="2"></p>
+<p>##sigmoid函数和tanh函数比较：<br>隐藏层：tanh函数的表现要好于sigmoid函数，因为tanh取值范围为[−1,+1]，输出分布在0值的附近，均值为0，从隐藏层到输出层数据起到了归一化（均值为0）的效果。<br>输出层：对于二分类任务的输出取值为{0,1}，故一般会选择sigmoid函数。<br>然而sigmoid和tanh函数在当|z|很大的时候，梯度会很小，在依据梯度的算法中，更新在后期会变得很慢。在实际应用中，要使|z|尽可能的落在0值附近。<br>ReLU弥补了前两者的缺陷，当z&gt;0时，梯度始终为1，从而提高神经网络基于梯度算法的运算速度。然而当z&lt;0时，梯度一直为0，但是实际的运用中，该缺陷的影响不是很大。<br>Leaky ReLU保证在z&lt;0的时候，梯度仍然不为0。<br>在选择激活函数的时候，如果在不知道该选什么的时候就选择ReLU，当然也没有固定答案，要依据实际问题在交叉验证集合中进行验证分析。</p>
 
         </div>
 
         
             <div class="article-tags tags">
                 
-                    <a href="/tags/hexo/"><i class="fa fa-tag fa-fw" aria-hidden="true"></i>&nbsp;hexo</a>
+                    <a href="/tags/机器学习/"><i class="fa fa-tag fa-fw" aria-hidden="true"></i>&nbsp;机器学习</a>
                 
             </div>
         
@@ -178,41 +164,21 @@
         
             <div class="prev-next">
                 
-                    <section class="prev" >
-                        <span class="art-item-left">
-                            <h6><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;上一篇</h6>
-                            <h4>
-                                <a href="/2018/09/17/激活函数的选择/" rel="prev" title="激活函数的选择">
-                                  
-                                      激活函数的选择
-                                  
-                                </a>
-                            </h4>
-                            
-                                <h6 class="tags">
-                                    
-                                        <i class="fa fa-tag fa-fw"></i>机器学习
-                                    
-                                </h6>
-                            
-                        </span>
-                    </section>
-                
                 
                     <section class="next">
                         <span class="art-item-right" aria-hidden="true">
                             <h6>下一篇&nbsp;<i class="fa fa-chevron-right" aria-hidden="true"></i></h6>
                             <h4>
-                                <a href="/2018/07/23/如何建立自己的知识体系/" rel="prev" title="如何建立自己的知识体系">
+                                <a href="/2018/07/24/Localhexonotfound/" rel="prev" title="Localhexonotfound引起的问题">
                                     
-                                        如何建立自己的知识体系
+                                        Localhexonotfound引起的问题
                                     
                                 </a>
                             </h4>
                             
                                 <h6 class="tags">
                                     
-                                        <i class="fa fa-tag fa-fw"></i>学习能力
+                                        <i class="fa fa-tag fa-fw"></i>hexo
                                     
                                 </h6>
                             
@@ -240,7 +206,7 @@
         <h4><i class="fa fa-bookmark fa-fw" aria-hidden="true"></i>&nbsp;你可能感兴趣的文章</h4>
         <ul>
             
-                <li><a href="http://yoursite.com/2018/09/17/激活函数的选择/">激活函数的选择</a></li>
+                <li><a href="http://yoursite.com/2018/07/24/Localhexonotfound/">Localhexonotfound引起的问题</a></li>
             
                 <li><a href="http://yoursite.com/2018/07/23/如何建立自己的知识体系/">如何建立自己的知识体系</a></li>
             
@@ -280,7 +246,7 @@
 
 <script>
     window.subData = {
-        title: 'Localhexonotfound引起的问题',
+        title: '激活函数的选择',
         tools: true
     }
 </script>
@@ -419,13 +385,6 @@
     
     
         
-    <section class='m_widget toc-wrapper'>
-        <div class="header"><i class="fa fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
-        <div class='content'>
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Local-hexo-not-found-以及-Error-4058"><span class="toc-text">Local hexo not found 以及 Error -4058</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hexo-s-无法运行以及访问localhost-4000无法得到页面"><span class="toc-text">hexo s 无法运行以及访问localhost:4000无法得到页面</span></a></li></ol>
-        </div>
-    </section>
-
 
     
 
