@@ -1,158 +1,167 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
 <head>
-    <meta charset="UTF-8" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>BobJiang</title>
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/">
+  <link rel="alternate" href="/atom.xml" title="BobJiang">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    
-
-    
-
-    <title>BobJiang</title>
-    <meta name="author" content="BobJiang" />
-    <meta name="version" content="1.0.0" />
-    <meta name="keywords" content="" />
-    <meta name="description" content="" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
-    <meta name="baidu-site-verification" content="F0CXvmUgA9" />
-
-    
-    
-    <link rel="icon" href="/guitar.png">
-    
-
-    <link rel="stylesheet" href="/css/style.css">
+  <link rel="shortcut icon" href="" />
+  <link rel="icon" href="" />
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
 </head>
+
 <body>
-
-    <div class="app">
-        <header class="header clearfix">
-    <div id="nav" class="nav">
-    <button id="open-panel" class="open-panel"><i class="icon-library"></i></button>
-
-    <nav class="nav-inner">
-
-        
-        
-        <li class="nav-item active">
-            <a class="nav-link" href="/">首页</a>
-        </li>
-        
-        
-        
-        <li class="nav-item nav-item-tag">
-            <a id="nav-tag" class="nav-link" href="#">标签</a>
-            <div id="nav-tags" class="nav-tag-wrap">
-                <i class="nav-tag-arrow"></i>
-                
-  <div class="widget-wrap">
-    <h3 class="widget-title">
-        <i class="icon-tag vm"></i>
-        <span class="vm">Tags</span>
-    </h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/">Laravel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习能力/">学习能力</a></li></ul>
-    </div>
-  </div>
-
-
-            </div>
-        </li>
-        
-        
-        
-        <li class="nav-item">
-            <a class="nav-link" href="/categories/problem">追求卓越</a>
-        </li>
-        
-        
-        
-        <li class="nav-item">
-            <a class="nav-link" href="/categories/copy">复制粘贴</a>
-        </li>
-        
-        
-        
-        <li class="nav-item">
-            <a class="nav-link" href="/archives">博客日志</a>
-        </li>
-        
-        
-        
-
-    </nav>
+    <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
 </div>
 
-    <aside id="aside" class="aside">
-    <div id="aside-mask" class="aside-mask"></div>
-    <div id="aside-inner" class="aside-inner">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"><i class="icon-search-stroke"></i></button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
 
-        
-        
+    <script>setLoadingBarProgress(20)</script>
+    <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >
+				<!-- <i class="fa fa-home"></i> -->
+				BobJiang
+			</a>
 
-        
-        <div class="author-meta">
-            
-            <div class="author-avatar">
-                <a href="/">
-                    <img src="/images/avatar.jpg" title="Sanonz">
-                </a>
-            </div>
-            
-            <div class="author-name">BobJiang</div>
-            <div class="author-work">实践即真理</div>
-            <div class="author-location">
-                <i class="icon-location vm"></i>
-                <span class="vm">四川，成都</span>
-            </div>
-            
-            <div class="author-thread-wrap">
-                <div class="author-threads clearfix">
-                    
-                    <a class="thread-item" href="https://github.com/JMYok" target="_blank" rel="noopener"><i class="icon-github"></i></a>
-                    
-                    
-                    
-                </div>
-            </div>
-            
-        </div>
-        
-    </div>
-</aside>
+				<div class='menu'>
+					<ul class='h-list'>
+                        
+    						
+    							<li>
+    								<a class='nav-about flat-box' href='/'>
+    									<i class='fa fa-home fa-'></i>&nbsp;主页
+    								</a>
+    							</li>
+    						
+    							<li>
+    								<a class='nav-projects flat-box' href='https://xaoxuu.com/proj'>
+    									<i class='fa fa-cube fa-'></i>&nbsp;项目
+    								</a>
+    							</li>
+    						
+    							<li>
+    								<a class='nav-home flat-box' href='/'>
+    									<i class='fa fa-rss fa-'></i>&nbsp;博客
+    								</a>
+    							</li>
+    						
+    							<li>
+    								<a class='nav-archives flat-box' href='/archives'>
+    									<i class='fa fa-archive fa-'></i>&nbsp;归档
+    								</a>
+    							</li>
+    						
+        			 
+					</ul>
+					<div class='underline'></div>
+				</div>
 
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon"><i class="fa fa-search fa-fw"></i></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fa fa-search fa-fw" href='javascript:void(0)'></span></a></li>
+				
+				<li class='s-menu'><a class="fa fa-navicon fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				xaoxuu
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="fa fa-comments fa-fw flat-box" href='javascript:void(0)'></a></li>
+				<li class='s-top'><a class="fa fa-arrow-up fa-fw flat-box" href='javascript:void(0)'></a></li>
+				<li class='s-toc'><a class="fa fa-list-ul fa-fw flat-box" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+	</div>
 </header>
+	<aside class="menu-phone">
+        <div class="header">BobJiang</div>
+		<nav>
+            <ul>
+                
+                    
+                        <li>
+                            <a class='nav-about flat-box nav flat-box' href='/'><i class='fa fa-home fa-fw'></i>&nbsp;主页</a>
+                        </li>
+                    
+                        <li>
+                            <a class='nav-projects flat-box nav flat-box' href='https://xaoxuu.com/proj'><i class='fa fa-cube fa-fw'></i>&nbsp;项目</a>
+                        </li>
+                    
+                        <li>
+                            <a class='nav-home flat-box nav flat-box' href='/'><i class='fa fa-rss fa-fw'></i>&nbsp;博客</a>
+                        </li>
+                    
+                        <li>
+                            <a class='nav-archives flat-box nav flat-box' href='/archives'><i class='fa fa-archive fa-fw'></i>&nbsp;归档</a>
+                        </li>
+                    
+             
+            </ul>
+		</nav>
+	</aside>
 
-        <div id="content" class="content">
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2018/07/24/Localhexonotfound/">Localhexonotfound引起的问题</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="/2018/07/24/Localhexonotfound/">
-    
-    <i class="icon-calendar"></i>
-    
-    <time datetime="2018-07-24T13:59:18.000Z" itemprop="datePublished">2018-07-24</time>
-</a>
-
+    <script>setLoadingBarProgress(40);</script>
+    <div class="l_body">
+    <div class='container clearfix'>
+        <div class='l_main'>
             
-<div class="article-tag-list">
-    <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/hexo/">hexo</a>
-</div>
 
-
-        </div>
-    </header>
+<section class="post-list">
     
-    <section class="article-body markdown-body">
+    
+        <div class='post-wrapper'>
+            <article class="post reveal ">
+    <section class="meta">
+        <h2 class="title">
+            <a href="/2018/07/24/Localhexonotfound/">
+                
+                    Localhexonotfound引起的问题
+                
+            </a>
+        </h2>
+        <time>
+            2018-07-24
+        </time>
         
+    
+    <div class='cats'>
+        <a href="/categories/problem/">problem</a>
+    </div>
+
+
+    </section>
+
+    <section class="article typo">
         <h3 id="Local-hexo-not-found-以及-Error-4058"><a href="#Local-hexo-not-found-以及-Error-4058" class="headerlink" title="Local hexo not found 以及 Error -4058"></a>Local hexo not found 以及 Error -4058</h3><p><em>之前想更换一个主题，但是因为git速度太慢失败了，其他的操作就没有了，然后就报了Local hexo not found ：</em></p>
 <blockquote>
 <p><em>ERROR Local hexo not found in G:test</em><br><em>ERROR Try running: ‘npm install hexo –save’</em></p>
@@ -172,38 +181,42 @@
 <p><em>舒服。</em></p>
 
         
+
+        
+            <div class="full-width auto-padding tags">
+                
+                    <a href="/tags/hexo/"><i class="fa fa-tag fa-fw"></i>&nbsp;hexo</a>
+                
+            </div>
+        
     </section>
 </article>
 
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2018/07/23/如何建立自己的知识体系/">如何建立自己的知识体系</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="/2018/07/23/如何建立自己的知识体系/">
-    
-    <i class="icon-calendar"></i>
-    
-    <time datetime="2018-07-23T15:24:27.000Z" itemprop="datePublished">2018-07-23</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/学习能力/">学习能力</a>
-</div>
-
-
         </div>
-    </header>
     
-    <section class="article-body markdown-body">
+        <div class='post-wrapper'>
+            <article class="post reveal ">
+    <section class="meta">
+        <h2 class="title">
+            <a href="/2018/07/23/如何建立自己的知识体系/">
+                
+                    如何建立自己的知识体系
+                
+            </a>
+        </h2>
+        <time>
+            2018-07-23
+        </time>
         
+    
+    <div class='cats'>
+        <a href="/categories/copy/">copy</a>
+    </div>
+
+
+    </section>
+
+    <section class="article typo">
         <h3 id="一、如何做笔记"><a href="#一、如何做笔记" class="headerlink" title="一、如何做笔记"></a><em>一、如何做笔记</em></h3><p><em>能把书中的框架和重点都展现出来或者你用一页纸能把重点说清楚，就算合格。</em></p>
 <blockquote>
 <ol>
@@ -242,38 +255,42 @@
 </blockquote>
 
         
+
+        
+            <div class="full-width auto-padding tags">
+                
+                    <a href="/tags/学习能力/"><i class="fa fa-tag fa-fw"></i>&nbsp;学习能力</a>
+                
+            </div>
+        
     </section>
 </article>
 
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2018/07/23/hexo搭建博客/">hexo搭建博客</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="/2018/07/23/hexo搭建博客/">
-    
-    <i class="icon-calendar"></i>
-    
-    <time datetime="2018-07-23T07:05:36.000Z" itemprop="datePublished">2018-07-23</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/hexo/">hexo</a>
-</div>
-
-
         </div>
-    </header>
     
-    <section class="article-body markdown-body">
+        <div class='post-wrapper'>
+            <article class="post reveal ">
+    <section class="meta">
+        <h2 class="title">
+            <a href="/2018/07/23/hexo搭建博客/">
+                
+                    hexo搭建博客
+                
+            </a>
+        </h2>
+        <time>
+            2018-07-23
+        </time>
         
+    
+    <div class='cats'>
+        <a href="/categories/problem/">problem</a>
+    </div>
+
+
+    </section>
+
+    <section class="article typo">
         <h3 id="hexo精简搭建流程及问题（windows）"><a href="#hexo精简搭建流程及问题（windows）" class="headerlink" title=" hexo精简搭建流程及问题（windows） "></a><em> hexo精简搭建流程及问题（windows） </em></h3><blockquote>
 <p> <em>1—安裝</em></p>
 </blockquote>
@@ -309,38 +326,42 @@
 </ol>
 
         
+
+        
+            <div class="full-width auto-padding tags">
+                
+                    <a href="/tags/hexo/"><i class="fa fa-tag fa-fw"></i>&nbsp;hexo</a>
+                
+            </div>
+        
     </section>
 </article>
 
-
-    <article class="article" itemscope itemprop="blogPost">
-    
-    <header class="article-header">
-        
-        <h1 itemprop="name">
-            <a href="/2017/10/07/Laravel开发中问题/">Laravel开发中问题</a>
-        </h1>
-        
-        <div class="article-meta clearfix">
-            <a class="article-date" href="/2017/10/07/Laravel开发中问题/">
-    
-    <i class="icon-calendar"></i>
-    
-    <time datetime="2017-10-06T20:14:33.000Z" itemprop="datePublished">2017-10-07</time>
-</a>
-
-            
-<div class="article-tag-list">
-    <i class="icon-tag"></i>
-    <a class="article-tag-link" href="/tags/Laravel/">Laravel</a>
-</div>
-
-
         </div>
-    </header>
     
-    <section class="article-body markdown-body">
+        <div class='post-wrapper'>
+            <article class="post reveal ">
+    <section class="meta">
+        <h2 class="title">
+            <a href="/2017/10/07/Laravel开发中问题/">
+                
+                    Laravel开发中问题
+                
+            </a>
+        </h2>
+        <time>
+            2017-10-07
+        </time>
         
+    
+    <div class='cats'>
+        
+    </div>
+
+
+    </section>
+
+    <section class="article typo">
         <p>(持续更新)</p>
 <ol>
 <li><p><strong>Use of undefined constant users - assumed ‘users’</strong><br>解决：<br>模型中表名未加单引号。<br>protected $table = ‘users’;</p>
@@ -352,48 +373,258 @@
 </ol>
 
         
+
+        
+            <div class="full-width auto-padding tags">
+                
+                    <a href="/tags/Laravel/"><i class="fa fa-tag fa-fw"></i>&nbsp;Laravel</a>
+                
+            </div>
+        
     </section>
 </article>
 
+        </div>
+    
+</section>
 
 
 
+        </div>
+        <aside class='l_side'>
+            
+    
+        
+    <section class='m_widget author'>
+        
+            <div class='header'>
+                <img class='avatar' src='/images/avatar.jpg' />
+            </div>
+        
+        <div class='content'>
+            
+                <h2>蒋啸天</h2>
+            
+            
+                <div>
+                    <i class="fa fa-quote-left fa-3x fa-pull-left" aria-hidden="true"></i>
+                    实践即真理。
+                </div>
+            
+        </div>
+        
+            <div class="social-wrapper">
+              
+                
+                    <a href="mailto:me@xaoxuu.com" class="social flat-box" target="_blank" rel="external"><i class="social fa fa-envelope" aria-hidden="true"></i></a>
+                
+              
+                
+                    <a href="https://github.com/xaoxuu" class="social flat-box" target="_blank" rel="external"><i class="social fa fa-github" aria-hidden="true"></i></a>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+                    <a href="https://music.163.com/#/user/home?id=63035382" class="social flat-box" target="_blank" rel="external"><i class="social fa fa-music" aria-hidden="true"></i></a>
+                
+              
+                
+                    <a href="atom" class="social flat-box" target="_blank" rel="external"><i class="social fa fa-rss" aria-hidden="true"></i></a>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            </div>
+        
+    </section>
 
-</div>
-        <footer class="footer">
-    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, Theme by <a href="https://github.com/sanonz/hexo-theme-concise" target="_blank">Concise</a>
-</footer>
 
-<script type="text/javascript" src="//s13.cnzz.com/z_stat.php?id=1234567890&amp;web_id=1234567890"></script>
+    
+    
+        <section class='m_widget categories'>
+    <div class='header'><i class="fa fa-sitemap fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;分类</div>
+    <div class='content'>
+        
+            <ul class="entry">
+                
+                    <li><a class="flat-box" href="/categories/copy/"><div class='name'>copy</div><div class='badge'>1</div></a></li>
+                
+                    <li><a class="flat-box" href="/categories/problem/"><div class='name'>problem</div><div class='badge'>2</div></a></li>
+                
+            </ul>
+        
+    </div>
+</section>
 
+    
+    
+        
+    <section class='m_widget tagcloud'>
+        <div class="header"><i class="fa fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
+        <div class='content'>
+            <a href="/tags/Laravel/" style="font-size: 14px; color: #999">Laravel</a> <a href="/tags/hexo/" style="font-size: 24px; color: #555">hexo</a> <a href="/tags/学习能力/" style="font-size: 14px; color: #999">学习能力</a>
+        </div>
+    </section>
+
+
+    
+    
+        <section class='m_widget music'>
+    <div class='header'><i class="fa fa-headphones fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;音乐</div>
+    <div class='content'>
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=100% height=450 src="//music.163.com/outchain/player?type=0&id=709100187&auto=0&height=450"></iframe>
+    </div>
+</section>
+
+    
+    
+        <section class='m_widget links'>
+    <div class='header'><i class="fa fa-handshake-o fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;友链</div>
+    <div class='content'>
+        <ul class="entry" id="links">
+            
+                <li><a class="flat-box" target="_blank" rel="external nofollow noopener noreferrer" href="https://xaoxuu.com">
+                    <div class='name'>
+                        <i class="fa fa-user-circle-o fa-fw" aria-hidden="true"></i>
+                        &nbsp;&nbsp;xaoxuu
+                    </div>
+                </a></li>
+            
+            
+
+        </ul>
 
     </div>
+</section>
 
-    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.9.0/jquery.min.js"></script>
     
-    <script type="text/javascript">
-        $(function() {
-            var nodes = {
-                nav: $('#nav'),
-                aside: $('#aside'),
-                navTags: $('#nav-tags')
-            };
+    
+        
 
-            $('#open-panel, #aside-mask').on('click', function() {
-                nodes.aside.toggleClass('panel-show');
-            });
-            $('#nav-tag').on('click', function(event) {
-                event.preventDefault();console.log(nodes.navTags.attr('class'))
-                nodes.navTags.toggleClass('tag-show');console.log(nodes.navTags.attr('class'))
-            })/*.hover(function() {
-                nodes.navTags.addClass('tag-show');
-            }, function() {
-                nodes.navTags.removeClass('tag-show');
-            });*/
+    
 
-            
-        });
+
+        </aside>
+        <script>setLoadingBarProgress(60);</script>
+    </div>
+    </div>
+    <footer id="footer" class="clearfix">
+    
+        <div class="social-wrapper">
+          
+              
+                  <a href="mailto:me@xaoxuu.com" class="social fa fa-envelope flat-box" target="_blank" rel="external"></a>
+              
+          
+              
+                  <a href="https://github.com/xaoxuu" class="social fa fa-github flat-box" target="_blank" rel="external"></a>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+                  <a href="https://music.163.com/#/user/home?id=63035382" class="social fa fa-music flat-box" target="_blank" rel="external"></a>
+              
+          
+              
+                  <a href="atom" class="social fa fa-rss flat-box" target="_blank" rel="external"></a>
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+              
+          
+        </div>
+    
+    <br>
+    <div>博客内容遵循 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="licenses">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></div>
+    <div>本站使用 <a href="https://github.com/xaoxuu/hexo-theme-material-x" target="_blank" class="codename">Material X</a> 作为主题，
+		总访问量为 <span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+    </div>
+</footer>
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+    <script>setLoadingBarProgress(80);</script>
+    <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<!-- 访问统计 -->
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/jquery.fitvids.js"></script>
+
+    <script>
+        var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+        var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+        var ALGOLIA_API_KEY = "";
+        var ALGOLIA_APP_ID = "";
+        var ALGOLIA_INDEX_NAME = "";
+        var AZURE_SERVICE_NAME = "";
+        var AZURE_INDEX_NAME = "";
+        var AZURE_QUERY_KEY = "";
+        var BAIDU_API_ID = "";
+        var SEARCH_SERVICE = "hexo" || "hexo";
+        var ROOT = "/"||"/";
+        if(!ROOT.endsWith('/'))ROOT += '/';
     </script>
 
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+
+
+
+    <script>setLoadingBarProgress(100);</script>
 </body>
-</html>
