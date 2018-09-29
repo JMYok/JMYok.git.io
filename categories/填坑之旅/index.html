@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>Tag: Laravel | BobJiang</title>
+  <title>Category: 填坑之旅 | BobJiang</title>
   <meta name="description" content="" />
   <meta name="keywords" content="" />
   <meta name="HandheldFriendly" content="True" />
@@ -126,7 +126,7 @@
         <div class='l_main'>
             
     <script>
-        window.subData= { title:'tag : Laravel'}
+        window.subData= { title:'category : 填坑之旅'}
     </script>
 
 
@@ -137,41 +137,48 @@
             <article class="post reveal ">
     <section class="meta">
         <h2 class="title">
-            <a href="/2017/10/07/Laravel开发中问题/">
+            <a href="/2018/07/24/Localhexonotfound/">
                 
-                    Laravel开发中问题
+                    Localhexonotfound引起的问题
                 
             </a>
         </h2>
         <time>
-            2017-10-07
+            2018-07-24
         </time>
         
     
     <div class='cats'>
-        
+        <a href="/categories/填坑之旅/">填坑之旅</a>
     </div>
 
 
     </section>
 
     <section class="article typo">
-        <p>(持续更新)</p>
-<ol>
-<li><p><strong>Use of undefined constant users - assumed ‘users’</strong><br>解决：<br>模型中表名未加单引号。<br>protected $table = ‘users’;</p>
-</li>
-<li><p><strong>SQLSTATE[HY000]: General error: 1364 Field ‘password’ doesn’t have a default value</strong><br>解决： protected $fillable = [<br>   ‘name’,’email’,’password,’<br> ];   (可填入字段错误的写入逗号)</p>
-</li>
-<li><p><strong>Type error: Argument 1 passed to Illuminate\Auth\EloquentUserProvider::validateCredentials() must be an instance of Illuminate\Contracts\Auth\Authenticatable, instance of App\Models\User given, called in /home/vagrant/Code/weibo2/vendor/laravel/framework/src/Illuminate/Auth/SessionGuard.php on line 381</strong><br>解决：<br>新创建的User类继承Model继承错误，应该继承Authenticatable，按照原本框架自带User更改即可，新建模型时需注意。</p>
-</li>
-</ol>
-
+        <h3 id="Local-hexo-not-found-以及-Error-4058"><a href="#Local-hexo-not-found-以及-Error-4058" class="headerlink" title="Local hexo not found 以及 Error -4058"></a>Local hexo not found 以及 Error -4058</h3><p>之前想更换一个主题，但是因为git速度太慢失败了，其他的操作就没有了，然后就报了Local hexo not found ：</p>
+<blockquote>
+<p>ERROR Local hexo not found in G:test<br>ERROR Try running: ‘npm install hexo –save’</p>
+</blockquote>
+<p>之后执行 <code>npm install hexo --save</code> ,出现checkingPermissions Missing错误：</p>
+<blockquote>
+<p>npm WARN checkPermissions Missing write access to C:\Users\liuyg\AppData\Roaming\npm\node_modules\vue-cli\node_modules\cliui\node_modules\wordwrap<br>npm ERR! path C:\Users\liuyg\AppData\Roaming\npm\node_modules\vue-cli\node_modules\cliui\node_modules\wordwrap</p>
+</blockquote>
+<p>解决：</p>
+<blockquote>
+<p>删除博客目录下的node_modules,再执行 <code>cnpm(淘宝镜像)</code> 重新下载。<br>执行 <code>hexo g</code> 成功</p>
+</blockquote>
+<h3 id="hexo-s-无法运行以及访问localhost-4000无法得到页面"><a href="#hexo-s-无法运行以及访问localhost-4000无法得到页面" class="headerlink" title="hexo s 无法运行以及访问localhost:4000无法得到页面"></a>hexo s 无法运行以及访问localhost:4000无法得到页面</h3><p>解决：</p>
+<blockquote>
+<p>1.因为在Hexo 3.0 后server被单独出来了，需要安装server，安装的命令如下： <code>cnpm install hexo-server --save</code> 安装此server后再试,hexo s问题解决。<br>2.可能是由于部分包没有下载完，执行 <code>cnpm install</code> ,再次访问得到页面。</p>
+</blockquote>
+<h3 id="舒服。"><a href="#舒服。" class="headerlink" title="舒服。"></a>舒服。</h3>
         
 
         
             <div class="full-width auto-padding tags">
                 
-                    <a href="/tags/Laravel/"><i class="fa fa-tag fa-fw"></i>&nbsp;Laravel</a>
+                    <a href="/tags/hexo/"><i class="fa fa-tag fa-fw"></i>&nbsp;hexo</a>
                 
             </div>
         
@@ -262,9 +269,13 @@
         
             <ul class="entry">
                 
-                    <li><a class="flat-box" href="/categories/copy/"><div class='name'>copy</div><div class='badge'>1</div></a></li>
+                    <li><a class="flat-box" href="/categories/copy/"><div class='name'>copy</div><div class='badge'>0</div></a></li>
                 
-                    <li><a class="flat-box" href="/categories/problem/"><div class='name'>problem</div><div class='badge'>2</div></a></li>
+                    <li><a class="flat-box" href="/categories/problem/"><div class='name'>problem</div><div class='badge'>1</div></a></li>
+                
+                    <li><a class="flat-box" href="/categories/其它汇总/"><div class='name'>其它汇总</div><div class='badge'>1</div></a></li>
+                
+                    <li><a class="flat-box" href="/categories/填坑之旅/"><div class='name'>填坑之旅</div><div class='badge'>1</div></a></li>
                 
                     <li><a class="flat-box" href="/categories/技术干货/"><div class='name'>技术干货</div><div class='badge'>1</div></a></li>
                 
@@ -279,7 +290,7 @@
     <section class='m_widget tagcloud'>
         <div class="header"><i class="fa fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
         <div class='content'>
-            <a href="/tags/Laravel/" style="font-size: 14px; color: #999">Laravel</a> <a href="/tags/hexo/" style="font-size: 24px; color: #555">hexo</a> <a href="/tags/学习能力/" style="font-size: 14px; color: #999">学习能力</a> <a href="/tags/机器学习/" style="font-size: 14px; color: #999">机器学习</a>
+            <a href="/tags/hexo/" style="font-size: 24px; color: #555">hexo</a> <a href="/tags/填坑之旅/" style="font-size: 14px; color: #999">填坑之旅</a> <a href="/tags/学习能力/" style="font-size: 14px; color: #999">学习能力</a> <a href="/tags/机器学习/" style="font-size: 14px; color: #999">机器学习</a>
         </div>
     </section>
 
