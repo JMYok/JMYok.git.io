@@ -52,12 +52,6 @@
     							</li>
     						
     							<li>
-    								<a class='nav-projects flat-box' href='https://xaoxuu.com/proj'>
-    									<i class='fa fa-cube fa-'></i>&nbsp;项目
-    								</a>
-    							</li>
-    						
-    							<li>
     								<a class='nav-home flat-box' href='/'>
     									<i class='fa fa-rss fa-'></i>&nbsp;博客
     								</a>
@@ -111,10 +105,6 @@
                     
                         <li>
                             <a class='nav-about flat-box nav flat-box' href='/'><i class='fa fa-home fa-fw'></i>&nbsp;主页</a>
-                        </li>
-                    
-                        <li>
-                            <a class='nav-projects flat-box nav flat-box' href='https://xaoxuu.com/proj'><i class='fa fa-cube fa-fw'></i>&nbsp;项目</a>
                         </li>
                     
                         <li>
@@ -289,6 +279,16 @@
                 
 
                 
+                    
+                        <h4><i class="fa fa-comments fa-fw" aria-hidden="true"></i>&nbsp;Valine评论</h4>
+                        <section id="comments">
+                            <div id="valine_container" class="valine_thread">
+                                </i><i class="fa fa-spinner fa-spin fa-fw"></i>
+                            </div>
+                        </section>
+                        <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+                    
+                
             
 
         </section>
@@ -321,7 +321,7 @@
             
                 <div>
                     <i class="fa fa-quote-left fa-3x fa-pull-left" aria-hidden="true"></i>
-                    实践即真理。
+                    实践即真理
                 </div>
             
         </div>
@@ -329,7 +329,7 @@
             <div class="social-wrapper">
               
                 
-                    <a href="https://github.com/xaoxuu" class="social flat-box" target="_blank" rel="external"><i class="social fa fa-github" aria-hidden="true"></i></a>
+                    <a href="https://github.com/JMYok" class="social flat-box" target="_blank" rel="external"><i class="social fa fa-github" aria-hidden="true"></i></a>
                 
               
                 
@@ -454,7 +454,7 @@
         <div class="social-wrapper">
           
               
-                  <a href="https://github.com/xaoxuu" class="social fa fa-github flat-box" target="_blank" rel="external"></a>
+                  <a href="https://github.com/JMYok" class="social fa fa-github flat-box" target="_blank" rel="external"></a>
               
           
               
@@ -535,6 +535,30 @@
 
     
     
+    
+        
+            <script>
+            var GUEST_INFO = ['nick','mail','link'];
+            var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+                return GUEST_INFO.indexOf(item) > -1
+            });
+            var notify = 'false' == true;
+            var verify = 'false' == true;
+            var valine = new Valine();
+            valine.init({
+                el: '#valine_container',
+                notify: notify,
+                verify: verify,
+                guest_info: guest_info,
+                appId: "soCbQMjaevtVFmXt4KXckBUb-gzGzoHsz",
+                appKey: "9cBlJv0ClxK0ezbxIayrRzcX",
+                placeholder: "快来评论吧~",
+                pageSize:'10',
+                avatar:'mp',
+                lang:'zh-cn'
+            })
+            </script>
+        
     
 
 
