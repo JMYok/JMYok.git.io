@@ -147,24 +147,23 @@
     <section class="article typo">
 
         <div class="article-entry" itemprop="articleBody">
-            <h3 id="Local-hexo-not-found-以及-Error-4058"><a href="#Local-hexo-not-found-以及-Error-4058" class="headerlink" title="Local hexo not found 以及 Error -4058"></a>Local hexo not found 以及 Error -4058</h3><p><em>之前想更换一个主题，但是因为git速度太慢失败了，其他的操作就没有了，然后就报了Local hexo not found ：</em></p>
+            <h3 id="Local-hexo-not-found-以及-Error-4058"><a href="#Local-hexo-not-found-以及-Error-4058" class="headerlink" title="Local hexo not found 以及 Error -4058"></a>Local hexo not found 以及 Error -4058</h3><p>之前想更换一个主题，但是因为git速度太慢失败了，其他的操作就没有了，然后就报了Local hexo not found ：</p>
 <blockquote>
-<p><em>ERROR Local hexo not found in G:test</em><br><em>ERROR Try running: ‘npm install hexo –save’</em></p>
+<p>ERROR Local hexo not found in G:test<br>ERROR Try running: ‘npm install hexo –save’</p>
 </blockquote>
-<p><em>之后执行 <code>npm install hexo --save</code> ,出现checkingPermissions Missing错误：</em></p>
+<p>之后执行 <code>npm install hexo --save</code> ,出现checkingPermissions Missing错误：</p>
 <blockquote>
 <p>npm WARN checkPermissions Missing write access to C:\Users\liuyg\AppData\Roaming\npm\node_modules\vue-cli\node_modules\cliui\node_modules\wordwrap<br>npm ERR! path C:\Users\liuyg\AppData\Roaming\npm\node_modules\vue-cli\node_modules\cliui\node_modules\wordwrap</p>
 </blockquote>
-<p><em>解决：</em></p>
+<p>解决：</p>
 <blockquote>
-<p><em>删除博客目录下的node_modules,再执行 <code>cnpm(淘宝镜像)</code> 重新下载。</em><br><em>执行 <code>hexo g</code> 成功</em></p>
+<p>删除博客目录下的node_modules,再执行 <code>cnpm(淘宝镜像)</code> 重新下载。<br>执行 <code>hexo g</code> 成功</p>
 </blockquote>
-<h3 id="hexo-s-无法运行以及访问localhost-4000无法得到页面"><a href="#hexo-s-无法运行以及访问localhost-4000无法得到页面" class="headerlink" title="hexo s 无法运行以及访问localhost:4000无法得到页面"></a>hexo s 无法运行以及访问localhost:4000无法得到页面</h3><p><em>解决：</em></p>
+<h3 id="hexo-s-无法运行以及访问localhost-4000无法得到页面"><a href="#hexo-s-无法运行以及访问localhost-4000无法得到页面" class="headerlink" title="hexo s 无法运行以及访问localhost:4000无法得到页面"></a>hexo s 无法运行以及访问localhost:4000无法得到页面</h3><p>解决：</p>
 <blockquote>
 <p>1.因为在Hexo 3.0 后server被单独出来了，需要安装server，安装的命令如下： <code>cnpm install hexo-server --save</code> 安装此server后再试,hexo s问题解决。<br>2.可能是由于部分包没有下载完，执行 <code>cnpm install</code> ,再次访问得到页面。</p>
 </blockquote>
-<p><em>舒服。</em></p>
-
+<h3 id="舒服。"><a href="#舒服。" class="headerlink" title="舒服。"></a>舒服。</h3>
         </div>
 
         
@@ -422,7 +421,7 @@
     <section class='m_widget toc-wrapper'>
         <div class="header"><i class="fa fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;目录</div>
         <div class='content'>
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Local-hexo-not-found-以及-Error-4058"><span class="toc-text">Local hexo not found 以及 Error -4058</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hexo-s-无法运行以及访问localhost-4000无法得到页面"><span class="toc-text">hexo s 无法运行以及访问localhost:4000无法得到页面</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Local-hexo-not-found-以及-Error-4058"><span class="toc-text">Local hexo not found 以及 Error -4058</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hexo-s-无法运行以及访问localhost-4000无法得到页面"><span class="toc-text">hexo s 无法运行以及访问localhost:4000无法得到页面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#舒服。"><span class="toc-text">舒服。</span></a></li></ol>
         </div>
     </section>
 
