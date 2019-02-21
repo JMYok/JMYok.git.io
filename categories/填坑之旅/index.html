@@ -1,492 +1,701 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  
-  <title>Category: 填坑之旅 | BobJiang</title>
-  <meta name="description" content="" />
-  <meta name="keywords" content="" />
-  <meta name="HandheldFriendly" content="True" />
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <link rel="shortcut icon" href="/">
-  <link rel="alternate" href="/atom.xml" title="BobJiang">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<html lang="">
+    <!-- title -->
 
-  <link rel="shortcut icon" href="" />
-  <link rel="icon" href="" />
-  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
-  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
-  <link rel="stylesheet" href="/style.css">
-  <script>
-    function setLoadingBarProgress(num) {
-      document.getElementById('loading-bar').style.width=num+"%";
+
+
+
+<!-- keywords -->
+
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
+    <meta name="author" content="BobJiang">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="BobJiang">
+    
+    <meta name="keywords" content="hexo,Bobjiang,Machine learning,data analytics,data mining">
+    
+    <meta name="description" content="">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>JMYok&#39;s Blog</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
     }
-  </script>
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href= "/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link rel="stylesheet" href= "/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href= "/assets/guitar.png" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script" />
+    <link rel="preload" href="/scripts/main.js" as="script" />
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
 </head>
 
-<body>
-    <div id="loading-bar-wrapper">
-  <div id="loading-bar"></div>
-</div>
+    
+    
+<header class="header">
 
-
-    <script>setLoadingBarProgress(20)</script>
-    <header class="l_header">
-	<div class='wrapper'>
-		<div class="nav-main container container--flex">
-			<a class="logo flat-box" href='/' >
-				<!-- <i class="fa fa-home"></i> -->
-				BobJiang
-			</a>
-
-				<div class='menu'>
-					<ul class='h-list'>
-                        
-    						
-    							<li>
-    								<a class='nav-about flat-box' href='/'>
-    									<i class='fa fa-home fa-'></i>&nbsp;主页
-    								</a>
-    							</li>
-    						
-    							<li>
-    								<a class='nav-home flat-box' href='/'>
-    									<i class='fa fa-rss fa-'></i>&nbsp;博客
-    								</a>
-    							</li>
-    						
-    							<li>
-    								<a class='nav-archives flat-box' href='/archives'>
-    									<i class='fa fa-archive fa-'></i>&nbsp;归档
-    								</a>
-    							</li>
-    						
-        			 
-					</ul>
-					<div class='underline'></div>
-				</div>
-
-			
-				<div class="m_search">
-					<form name="searchform" class="form u-search-form">
-						<input type="text" class="input u-search-input" placeholder="Search" />
-						<span class="icon"><i class="fa fa-search fa-fw"></i></span>
-					</form>
-				</div>
-			
-			<ul class='switcher h-list'>
-				
-					<li class='s-search'><a class="fa fa-search fa-fw" href='javascript:void(0)'></span></a></li>
-				
-				<li class='s-menu'><a class="fa fa-navicon fa-fw" href='javascript:void(0)'></a></li>
-			</ul>
-		</div>
-
-		<div class='nav-sub container container--flex'>
-			<a class="logo" class="flat-box" href='javascript:void(0)'>
-				xaoxuu
-			</a>
-
-			<ul class='switcher h-list'>
-				<li class='s-comment'><a class="fa fa-comments fa-fw flat-box" href='javascript:void(0)'></a></li>
-				<li class='s-top'><a class="fa fa-arrow-up fa-fw flat-box" href='javascript:void(0)'></a></li>
-				<li class='s-toc'><a class="fa fa-list-ul fa-fw flat-box" href='javascript:void(0)'></a></li>
-			</ul>
-		</div>
-	</div>
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <a class="home-link" href=/>Welcome To Bob's Space.</a>
 </header>
-	<aside class="menu-phone">
-        <div class="header">BobJiang</div>
-		<nav>
-            <ul>
-                
-                    
-                        <li>
-                            <a class='nav-about flat-box nav flat-box' href='/'><i class='fa fa-home fa-fw'></i>&nbsp;主页</a>
-                        </li>
-                    
-                        <li>
-                            <a class='nav-home flat-box nav flat-box' href='/'><i class='fa fa-rss fa-fw'></i>&nbsp;博客</a>
-                        </li>
-                    
-                        <li>
-                            <a class='nav-archives flat-box nav flat-box' href='/archives'><i class='fa fa-archive fa-fw'></i>&nbsp;归档</a>
-                        </li>
-                    
-             
-            </ul>
-		</nav>
-	</aside>
+    <div class="wrapper">
+        <div class="site-intro" style="
 
-    <script>setLoadingBarProgress(40);</script>
-    <div class="l_body">
-    <div class='container clearfix'>
-        <div class='l_main'>
+
+
+
+
+
+">
+    
+    <!-- 主页  -->
             
-    <script>
-        window.subData= { title:'category : 填坑之旅'}
-    </script>
-
-
-<section class="post-list">
-    
-    
-        <div class='post-wrapper'>
-            <article class="post reveal ">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2018/07/24/Localhexonotfound/">
-                
-                    Localhexonotfound引起的问题
-                
-            </a>
-        </h2>
-        <time>
-            2018-07-24
-        </time>
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+        </p>
+        <!-- 文章页meta -->
         
-    
-    <div class='cats'>
-        <a href="/categories/填坑之旅/">填坑之旅</a>
     </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
 
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
 
-    </section>
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
 
-    <section class="article typo">
-        <h3 id="Local-hexo-not-found-以及-Error-4058"><a href="#Local-hexo-not-found-以及-Error-4058" class="headerlink" title="Local hexo not found 以及 Error -4058"></a>Local hexo not found 以及 Error -4058</h3><p>之前想更换一个主题，但是因为git速度太慢失败了，其他的操作就没有了，然后就报了Local hexo not found ：</p>
-<blockquote>
-<p>ERROR Local hexo not found in G:test<br>ERROR Try running: ‘npm install hexo –save’</p>
-</blockquote>
-<p>之后执行 <code>npm install hexo --save</code> ,出现checkingPermissions Missing错误：</p>
-<blockquote>
-<p>npm WARN checkPermissions Missing write access to C:\Users\liuyg\AppData\Roaming\npm\node_modules\vue-cli\node_modules\cliui\node_modules\wordwrap<br>npm ERR! path C:\Users\liuyg\AppData\Roaming\npm\node_modules\vue-cli\node_modules\cliui\node_modules\wordwrap</p>
-</blockquote>
-<p>解决：</p>
-<blockquote>
-<p>删除博客目录下的node_modules,再执行 <code>cnpm(淘宝镜像)</code> 重新下载。<br>执行 <code>hexo g</code> 成功</p>
-</blockquote>
-<h3 id="hexo-s-无法运行以及访问localhost-4000无法得到页面"><a href="#hexo-s-无法运行以及访问localhost-4000无法得到页面" class="headerlink" title="hexo s 无法运行以及访问localhost:4000无法得到页面"></a>hexo s 无法运行以及访问localhost:4000无法得到页面</h3><p>解决：</p>
-<blockquote>
-<p>1.因为在Hexo 3.0 后server被单独出来了，需要安装server，安装的命令如下： <code>cnpm install hexo-server --save</code> 安装此server后再试,hexo s问题解决。<br>2.可能是由于部分包没有下载完，执行 <code>cnpm install</code> ,再次访问得到页面。</p>
-</blockquote>
-<h3 id="舒服。"><a href="#舒服。" class="headerlink" title="舒服。"></a>舒服。</h3>
-        
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
 
-        
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/hexo/"><i class="fa fa-tag fa-fw"></i>&nbsp;hexo</a>
-                
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main index-page">
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2018/07/24/Localhexonotfound/" >
+            
+                <span>Localhexonotfound引起的问题</span>
+        </a>
+        <div class="abstract-content">
+            Local hexo not found 以及 Error -4058之前想更换一个主题，但是因为git速度太慢失败了，其他的操作就没有了，然后就报了Local hexo not found ：
+
+ERROR Local hexo not found in G:testERROR Try running: ‘npm install hexo –save’
+
+之后执行 npm install hexo --save ,出现checkingPermissions Missing错误：
+
+npm WARN checkPermissions Missing write access to C:\...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/07/24</span>
             </div>
-        
-    </section>
-</article>
-
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "hexo">hexo</a>
+    
+</div>
+            
         </div>
+    </article>
     
-        <div class='post-wrapper'>
-            <article class="post reveal ">
-    <section class="meta">
-        <h2 class="title">
-            <a href="/2018/07/23/hexo搭建博客/">
-                
-                    hexo搭建博客
-                
-            </a>
-        </h2>
-        <time>
-            2018-07-23
-        </time>
-        
     
-    <div class='cats'>
-        <a href="/categories/填坑之旅/">填坑之旅</a>
-    </div>
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2018/07/23/hexo搭建博客/" >
+            
+                <span>hexo搭建博客</span>
+        </a>
+        <div class="abstract-content">
+             hexo精简搭建流程及问题（windows） 
+ 1—安裝
 
 
-    </section>
+首先电脑上需要保证有Node.js以及Git
+执行npm install -g hexo (-g参数代表的是全局安裝)
+如果安装太慢试试淘宝镜像cnpm:npm install -g cnpm –registry=https://registry.npm.taobao.org
 
-    <section class="article typo">
-        <h3 id="hexo精简搭建流程及问题（windows）"><a href="#hexo精简搭建流程及问题（windows）" class="headerlink" title=" hexo精简搭建流程及问题（windows） "></a><em> hexo精简搭建流程及问题（windows） </em></h3><blockquote>
-<p> <em>1—安裝</em></p>
-</blockquote>
-<ul>
-<li>首先电脑上需要保证有Node.js以及Git</li>
-<li>执行npm install -g hexo (-g参数代表的是全局安裝)</li>
-<li>如果安装太慢试试淘宝镜像<em>cnpm</em>:npm install -g cnpm –registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a></li>
-</ul>
-<blockquote>
-<p><em>2—初始化以及配置</em></p>
-</blockquote>
-<ul>
-<li><p>安装成功后，选择好合适的保存博客内容的文件夹,执行 <code>hexo init</code>便会安装相关依赖完成初始化, <em>一定要在git里面执行</em>,在DOS里执行不会成功创建相应文件夹，之前被坑惨。。。</p>
-</li>
-<li><p>之后进入 <code>_config.yml</code> 进行配置,其他相应属性都没什么，网上搜索即可知道对应的作用，主要是最后的部署配置项:</p>
-</li>
-</ul>
-<blockquote>
-<p>deploy:<br>type: github<br>repository: <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:Yourname/Yourname.git.io.git<br>branch: master</p>
-</blockquote>
-<p> 这里有三个坑：</p>
-<ol>
-<li>在每个属性后面都要空一格</li>
-<li>因为github配置了ssh密匙,所以我的repository用的ssh地址的方式。之前https的方式一直报错，越改越错…可能是git的功力不够深厚</li>
-<li>在github创建repository时,取名方式为： <em>Yourname.github.io</em>,名字不按规则会导致部署Git page时目录错误，比如之前我的仓库名是Yourname.git.io,部署完成后博客路径为<a href="https://Yourname.github.io/Yourname.git.io" target="_blank" rel="noopener">https://Yourname.github.io/Yourname.git.io</a>, 样式全部丢失(???)。</li>
-</ol>
-<blockquote>
-<p><em>3—部署</em></p>
-</blockquote>
-<ol>
-<li>执行 <code>hexo g</code> 生成页面, <code>hexo s</code>在localhost：4000查看效果, <code>hexo d</code>执行部署</li>
-<li>在github中进入博客的repository的Settings,找到GitHub Pages,选择master,然后save,大约一分钟博客成功部署。但是一般来说 <code>hexo d</code> 后就自动设定好了,第二步可作为检索差错的一个方法。</li>
-</ol>
 
-        
+2—初始化以及配置
 
-        
-            <div class="full-width auto-padding tags">
-                
-                    <a href="/tags/hexo/"><i class="fa fa-tag fa-fw"></i>&nbsp;hexo</a>
-                
+
+安装成功后，选择好合适的保存博客内容的文件夹,执行 hexo init便会安装相关依赖完成初始化, 一定要在git里面执行,在DOS里执行不会成功创建相应文件夹，之前被坑惨。。。
+
+之后进入 _config.yml 进行配...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/07/23</span>
             </div>
-        
-    </section>
-</article>
-
-        </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
     
-</section>
-
-
-
-        </div>
-        <aside class='l_side'>
-            
+        <a class="post-tag" href="javascript:void(0);" data-tags = "hexo">hexo</a>
     
-        
-    <section class='m_widget author'>
-        
-            <div class='header'>
-                <img class='avatar' src='/images/avatar.jpg' />
-            </div>
-        
-        <div class='content'>
-            
-                <h2>蒋啸天</h2>
-            
-            
-                <div>
-                    <i class="fa fa-quote-left fa-3x fa-pull-left" aria-hidden="true"></i>
-                    实践即真理
-                </div>
+</div>
             
         </div>
-        
-            <div class="social-wrapper">
-              
-                
-                    <a href="https://github.com/JMYok" class="social flat-box" target="_blank" rel="external"><i class="social fa fa-github" aria-hidden="true"></i></a>
-                
-              
-                
-              
-                
-              
-                
-              
-                
-                    <a href="https://music.163.com/#/user/home?id=474460400" class="social flat-box" target="_blank" rel="external"><i class="social fa fa-music" aria-hidden="true"></i></a>
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-            </div>
-        
-    </section>
-
-
+    </article>
     
+    <!-- paginator  -->
     
-        <section class='m_widget categories'>
-    <div class='header'><i class="fa fa-sitemap fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;分类</div>
-    <div class='content'>
-        
-            <ul class="entry">
-                
-                    <li><a class="flat-box" href="/categories/其它汇总/"><div class='name'>其它汇总</div><div class='badge'>1</div></a></li>
-                
-                    <li><a class="flat-box" href="/categories/填坑之旅/"><div class='name'>填坑之旅</div><div class='badge'>2</div></a></li>
-                
-                    <li><a class="flat-box" href="/categories/技术干货/"><div class='name'>技术干货</div><div class='badge'>1</div></a></li>
-                
-            </ul>
-        
-    </div>
-</section>
-
-    
-    
-        
-    <section class='m_widget tagcloud'>
-        <div class="header"><i class="fa fa-tags fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;标签</div>
-        <div class='content'>
-            <a href="/tags/hexo/" style="font-size: 24px; color: #555">hexo</a> <a href="/tags/填坑之旅/" style="font-size: 14px; color: #999">填坑之旅</a> <a href="/tags/学习能力/" style="font-size: 14px; color: #999">学习能力</a> <a href="/tags/机器学习/" style="font-size: 14px; color: #999">机器学习</a>
+</main>
+            <!-- profile -->
+            
         </div>
-    </section>
-
-
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
     
-    
-        <section class='m_widget music'>
-    <div class='header'><i class="fa fa-headphones fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;音乐</div>
-    <div class='content'>
-        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=100% height=450 src="//music.163.com/outchain/player?type=0&id=709100187&auto=0&height=450"></iframe>
-    </div>
-</section>
-
-    
-    
-        <section class='m_widget links'>
-    <div class='header'><i class="fa fa-handshake-o fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;友链</div>
-    <div class='content'>
-        <ul class="entry" id="links">
-            
-                <li><a class="flat-box" target="_blank" rel="external nofollow noopener noreferrer" href="https://xaoxuu.com">
-                    <div class='name'>
-                        <i class="fa fa-user-circle-o fa-fw" aria-hidden="true"></i>
-                        &nbsp;&nbsp;xaoxuu
-                    </div>
-                </a></li>
-            
-            
-
-        </ul>
-
-    </div>
-</section>
-
-    
+    <div class="social">
+        
     
         
-
+            
+                <a href="mailto:374123140@qq.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/JMYok" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title=wechat>
+                  
+                  <img class="profile-qr" src="/assets/example_qr.png" />
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
     
 
-
-        </aside>
-        <script>setLoadingBarProgress(60);</script>
     </div>
-    </div>
-    <footer id="footer" class="clearfix">
     
-        <div class="social-wrapper">
-          
-              
-                  <a href="https://github.com/JMYok" class="social fa fa-github flat-box" target="_blank" rel="external"></a>
-              
-          
-              
-          
-              
-          
-              
-          
-              
-                  <a href="https://music.163.com/#/user/home?id=474460400" class="social fa fa-music flat-box" target="_blank" rel="external"></a>
-              
-          
-              
-          
-              
-          
-              
-          
-              
-          
-              
-          
-              
-          
-              
-          
-              
-          
-              
-          
-              
-          
-              
-          
-              
-          
-              
-          
-        </div>
-    
-    <br>
-    <div>博客内容遵循 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="licenses">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></div>
-    <div>本站使用 <a href="https://github.com/xaoxuu/hexo-theme-material-x" target="_blank" class="codename">Material X</a> 作为主题，
-		总访问量为 <span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
     </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
 </footer>
-<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
-
-
-    <script>setLoadingBarProgress(80);</script>
-    <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
-<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
-<!-- 访问统计 -->
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-
-<script src="/js/jquery.fitvids.js"></script>
-
+    </div>
+    <!-- toc -->
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 5
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2018 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/17</span><a class="archive-post-title" href= "/2018/09/17/激活函数的选择/" >激活函数的选择</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/24</span><a class="archive-post-title" href= "/2018/07/24/Localhexonotfound/" >Localhexonotfound引起的问题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/23</span><a class="archive-post-title" href= "/2018/07/23/如何建立自己的知识体系/" >如何建立自己的知识体系</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/23</span><a class="archive-post-title" href= "/2018/07/23/hexo搭建博客/" >hexo搭建博客</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2017 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/07</span><a class="archive-post-title" href= "/2017/10/07/Laravel开发中问题/" >Laravel开发中问题</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="填坑之旅"><span class="iconfont-archer">&#xe606;</span>填坑之旅</span>
+    
+        <span class="sidebar-tag-name" data-tags="hexo"><span class="iconfont-archer">&#xe606;</span>hexo</span>
+    
+        <span class="sidebar-tag-name" data-tags="机器学习"><span class="iconfont-archer">&#xe606;</span>机器学习</span>
+    
+        <span class="sidebar-tag-name" data-tags="学习能力"><span class="iconfont-archer">&#xe606;</span>学习能力</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="填坑之旅"><span class="iconfont-archer">&#xe60a;</span>填坑之旅</span>
+    
+        <span class="sidebar-category-name" data-categories="技术干货"><span class="iconfont-archer">&#xe60a;</span>技术干货</span>
+    
+        <span class="sidebar-category-name" data-categories="其它汇总"><span class="iconfont-archer">&#xe60a;</span>其它汇总</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
     <script>
-        var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
-        var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
-        var ALGOLIA_API_KEY = "";
-        var ALGOLIA_APP_ID = "";
-        var ALGOLIA_INDEX_NAME = "";
-        var AZURE_SERVICE_NAME = "";
-        var AZURE_INDEX_NAME = "";
-        var AZURE_QUERY_KEY = "";
-        var BAIDU_API_ID = "";
-        var SEARCH_SERVICE = "hexo" || "hexo";
-        var ROOT = "/"||"/";
-        if(!ROOT.endsWith('/'))ROOT += '/';
+    var siteMeta = {
+        root: "/",
+        author: "BobJiang"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
     </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+     
+    </body>
+</html>
 
-<script src="/js/search.js"></script>
-<script src="/js/app.js"></script>
 
-
-
-    <script>setLoadingBarProgress(100);</script>
-</body>
