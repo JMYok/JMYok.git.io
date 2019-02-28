@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>hexo搭建博客 · JMYok&#39;s Blog</title>
+    <title>JMYok&#39;s Blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -203,23 +203,12 @@
 </head>
 
     
-        <body class="post-body">
-    
     
 <header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
-    
-    <div class="banner">
-            <div class="blog-title">
-                <a href="/" >Welcome To Bob&#39;s Space.</a>
-            </div>
-            <div class="post-title">
-                <a href="#" class="post-name">hexo搭建博客</a>
-            </div>
-    </div>
     
     <a class="home-link" href=/>Welcome To Bob's Space.</a>
 </header>
@@ -231,74 +220,24 @@
 
 
 
-
-height:50vh;
 ">
     
     <!-- 主页  -->
-    
-    
-    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-img" style="background-image: url(/)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
-            
-            hexo搭建博客
-            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
-            
-            <!-- 404 -->
-            
         </p>
         <!-- 文章页meta -->
-        
-            <div class="post-intros">
-                <!-- 文章页标签  -->
-                
-                    <div class= post-intro-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "hexo">hexo</a>
-    
-</div>
-                
-                
-                    <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">423</span>阅读时长: <span class="post-count reading-time">2 min</span></span>
-                    </div>
-                
-                <div class="post-intro-meta">
-                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2018/07/23</span>
-                    
-                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
-                        <span class="iconfont-archer">&#xe602;</span>
-                        <span id="busuanzi_value_page_pv"></span>
-                    </span>
-                    
-                    <span class="shareWrapper">
-                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
-                        <span class="shareText">Share</span>
-                        <ul class="shareList">
-                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
-                                <div class="share-qrcode"></div>
-                            </li>
-                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
-                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
-                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
-                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
-                        </ul>
-                    </span>
-                </div>
-            </div>
         
     </div>
 </div>
@@ -399,86 +338,39 @@ height:50vh;
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main post-page">
-    <article class="article-entry">
-        <h3 id="hexo精简搭建流程及问题（windows）"><a href="#hexo精简搭建流程及问题（windows）" class="headerlink" title=" hexo精简搭建流程及问题（windows） "></a><em> hexo精简搭建流程及问题（windows） </em></h3><blockquote>
-<p> <em>1—安裝</em></p>
-</blockquote>
-<ul>
-<li>首先电脑上需要保证有Node.js以及Git</li>
-<li>执行npm install -g hexo (-g参数代表的是全局安裝)</li>
-<li>如果安装太慢试试淘宝镜像<em>cnpm</em>:npm install -g cnpm –registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a></li>
-</ul>
-<blockquote>
-<p><em>2—初始化以及配置</em></p>
-</blockquote>
-<ul>
-<li><p>安装成功后，选择好合适的保存博客内容的文件夹,执行 <code>hexo init</code>便会安装相关依赖完成初始化, <em>一定要在git里面执行</em>,在DOS里执行不会成功创建相应文件夹，之前被坑惨。。。</p>
-</li>
-<li><p>之后进入 <code>_config.yml</code> 进行配置,其他相应属性都没什么，网上搜索即可知道对应的作用，主要是最后的部署配置项:</p>
-</li>
-</ul>
-<blockquote>
-<p>deploy:<br>type: github<br>repository: <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:Yourname/Yourname.git.io.git<br>branch: master</p>
-</blockquote>
-<p> 这里有三个坑：</p>
-<ol>
-<li>在每个属性后面都要空一格</li>
-<li>因为github配置了ssh密匙,所以我的repository用的ssh地址的方式。之前https的方式一直报错，越改越错…可能是git的功力不够深厚</li>
-<li>在github创建repository时,取名方式为： <em>Yourname.github.io</em>,名字不按规则会导致部署Git page时目录错误，比如之前我的仓库名是Yourname.git.io,部署完成后博客路径为<a href="https://Yourname.github.io/Yourname.git.io" target="_blank" rel="noopener">https://Yourname.github.io/Yourname.git.io</a>, 样式全部丢失(???)。</li>
-</ol>
-<blockquote>
-<p><em>3—部署</em></p>
-</blockquote>
-<ol>
-<li>执行 <code>hexo g</code> 生成页面, <code>hexo s</code>在localhost：4000查看效果, <code>hexo d</code>执行部署</li>
-<li>在github中进入博客的repository的Settings,找到GitHub Pages,选择master,然后save,大约一分钟博客成功部署。但是一般来说 <code>hexo d</code> 后就自动设定好了,第二步可作为检索差错的一个方法。</li>
-</ol>
-
-    </article>
-    <!-- license  -->
+            <main class="main index-page">
     
-        <div class="license-wrapper">
-            <p>原文作者：<a href="https://jmyok.github.io">BobJiang</a>
-            <p>原文链接：<a href="https://jmyok.github.io/2018/07/23/hexo搭建博客/">https://jmyok.github.io/2018/07/23/hexo搭建博客/</a>
-            <p>发表日期：<a href="https://jmyok.github.io/2018/07/23/hexo搭建博客/">July 23rd 2018, 3:05:36 pm</a>
-            <p>更新日期：<a href="https://jmyok.github.io/2018/07/23/hexo搭建博客/">September 29th 2018, 4:14:26 pm</a>
-            <p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2019/02/28/1030-Travel-Plan-（30-分）-dijkstra模版/" >
+            
+                <span>1030 Travel Plan （30 分）[dijkstra模版]</span>
+        </a>
+        <div class="abstract-content">
+            1030 Travel Plan （30 分）A traveler’s map gives the distances between cities along the highways, together with the cost of each highway. Now you are supposed to write a program to help a traveler to decide the shortest path between his/her starting city and the destination. If such a shortest path ...
         </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2019/02/28</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "PAT甲级">PAT甲级</a>
+    
+</div>
+            
+        </div>
+    </article>
     
     <!-- paginator  -->
-    <ul class="post-paginator">
-        <li class="next">
-            
-                <div class="nextSlogan">Next Post</div>
-                <a href= "/2018/07/23/如何建立自己的知识体系/" title= "如何建立自己的知识体系">
-                    <div class="nextTitle">如何建立自己的知识体系</div>
-                </a>
-            
-        </li>
-        <li class="previous">
-            
-                <div class="prevSlogan">Previous Post</div>
-                <a href= "/2017/10/07/Laravel开发中问题/" title= "Laravel开发中问题">
-                    <div class="prevTitle">Laravel开发中问题</div>
-                </a>
-            
-        </li>
-    </ul>
-    <!-- 评论插件 -->
-    <!-- 来必力City版安装代码 -->
-
-<!-- City版安装代码已完成 -->
     
-    
-    <!-- partial('_partial/comment/changyan') -->
-    <!--PC版-->
-
-
-    
-    
-
-    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -563,24 +455,6 @@ height:50vh;
 </footer>
     </div>
     <!-- toc -->
-    
-    <div class="toc-wrapper" style=
-    
-
-
-
-
-
-
-
-top:50vh;
-
-    >
-        <div class="toc-catalog">
-            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
-        </div>
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#hexo精简搭建流程及问题（windows）"><span class="toc-number">1.</span> <span class="toc-text"> hexo精简搭建流程及问题（windows） </span></a></li></ol>
-    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -826,8 +700,6 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
-    
-        <script src="/scripts/share.js" async></script>    
      
     </body>
 </html>

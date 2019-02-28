@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>hexo搭建博客 · JMYok&#39;s Blog</title>
+    <title>1030 Travel Plan （30 分）[dijkstra模版] · JMYok&#39;s Blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -217,7 +217,7 @@
                 <a href="/" >Welcome To Bob&#39;s Space.</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">hexo搭建博客</a>
+                <a href="#" class="post-name">1030 Travel Plan （30 分）[dijkstra模版]</a>
             </div>
     </div>
     
@@ -247,7 +247,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            hexo搭建博客
+            1030 Travel Plan （30 分）[dijkstra模版]
             <!-- 404 -->
             
         </h1>
@@ -266,18 +266,18 @@ height:50vh;
                 
                     <div class= post-intro-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "hexo">hexo</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "PAT甲级">PAT甲级</a>
     
 </div>
                 
                 
                     <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">423</span>阅读时长: <span class="post-count reading-time">2 min</span></span>
+                        <span>字数统计: <span class="post-count word-count">733</span>阅读时长: <span class="post-count reading-time">4 min</span></span>
                     </div>
                 
                 <div class="post-intro-meta">
                     <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2018/07/23</span>
+                    <span class="post-intro-time">2019/02/28</span>
                     
                     <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                         <span class="iconfont-archer">&#xe602;</span>
@@ -401,38 +401,112 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h3 id="hexo精简搭建流程及问题（windows）"><a href="#hexo精简搭建流程及问题（windows）" class="headerlink" title=" hexo精简搭建流程及问题（windows） "></a><em> hexo精简搭建流程及问题（windows） </em></h3><blockquote>
-<p> <em>1—安裝</em></p>
-</blockquote>
-<ul>
-<li>首先电脑上需要保证有Node.js以及Git</li>
-<li>执行npm install -g hexo (-g参数代表的是全局安裝)</li>
-<li>如果安装太慢试试淘宝镜像<em>cnpm</em>:npm install -g cnpm –registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a></li>
+        <h3 id="1030-Travel-Plan-（30-分）"><a href="#1030-Travel-Plan-（30-分）" class="headerlink" title="1030 Travel Plan （30 分）"></a>1030 Travel Plan （30 分）</h3><p>A traveler’s map gives the distances between cities along the highways, together with the cost of each highway. Now you are supposed to write a program to help a traveler to decide the shortest path between his/her starting city and the destination. If such a shortest path is not unique, you are supposed to output the one with the minimum cost, which is guaranteed to be unique.</p>
+<h3 id="Input-Specification"><a href="#Input-Specification" class="headerlink" title="Input Specification:"></a>Input Specification:</h3><p>Each input file contains one test case. Each case starts with a line containing 4 positive integers N, M, S, and D, where N (≤500) is the number of cities (and hence the cities are numbered from 0 to N−1); M is the number of highways; S and D are the starting and the destination cities, respectively. Then M lines follow, each provides the information of a highway, in the format:</p>
+<pre><code>City1 City2 Distance Cost
+</code></pre><p>where the numbers are all integers no more than 500, and are separated by a space.</p>
+<h3 id="Output-Specification"><a href="#Output-Specification" class="headerlink" title="Output Specification:"></a>Output Specification:</h3><p>For each test case, print in one line the cities along the shortest path from the starting point to the destination, followed by the total distance and the total cost of the path. The numbers must be separated by a space and there must be no extra space at the end of output.</p>
+<h3 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input:"></a>Sample Input:</h3><pre><code>4 5 0 3
+0 1 1 20
+1 3 2 30
+0 3 4 10
+0 2 2 20
+2 3 1 20
+</code></pre><h3 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output:"></a>Sample Output:</h3><pre><code>0 2 3 3 40
+</code></pre><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><pre><code>#include&lt;cstdio&gt;
+#include&lt;vector&gt;
+using namespace std;
+const int maxn = 505;
+const int inf = 9999999;
+int n, m, s, d;
+int G[maxn][maxn];
+bool visit[maxn];
+int dis[maxn];                //从起点到某点的距离
+int cost[maxn][maxn];        //边权
+vector&lt;int&gt; temppath, path; //路径
+vector&lt;int&gt; pre[maxn];        //保存前驱
+int mincost = inf;
+
+//dijsktra找到最短路径，得到前驱集合
+void dijsktra(int s){
+    fill(dis, dis + maxn, inf);
+    fill(visit, visit + maxn, false);
+    dis[s] = 0;
+    while (1){
+        int u = -1, min = inf;
+        for (int i = 0; i &lt; n; i++){
+            if (!visit[i] &amp;&amp; dis[i] &lt; min){
+                u = i;
+                min = dis[i];
+            }
+        }
+        if (u == -1)break;
+        visit[u] = true;
+        for (int v = 0; v &lt; n; v++){
+            if (!visit[v] &amp;&amp; G[u][v] != inf){
+                if (dis[u] + G[u][v] &lt; dis[v]){
+                    dis[v] = dis[u] + G[u][v];
+                    pre[v].clear();
+                    pre[v].push_back(u);
+                }
+                else if (dis[u] + G[u][v] == dis[v]){
+                    pre[v].push_back(u);
+                }
+            }
+        }
+    }
+}
+
+//在最短路径的情况下得到最小开销的具体路径
+void dfs(int v){
+    if (v == s){ //递归边界
+        temppath.push_back(v);
+        int tempcost=0;
+        for (int i = 0; i+1 &lt; temppath.size(); i++) {
+            int a = temppath[i], b = temppath[i + 1];
+            tempcost += cost[a][b];
+        }
+        if (tempcost &lt; mincost){
+            mincost = tempcost;
+            path = temppath;
+        }
+        temppath.pop_back();
+        return;
+    }
+    temppath.push_back(v);
+    for (int i = 0; i &lt; pre[v].size(); i++){ //遍历前驱
+        dfs(pre[v][i]);
+    }
+    temppath.pop_back();//前驱遍历完删除
+}
+
+
+int main(){
+    fill(G[0], G[0] + maxn*maxn, inf);
+    scanf(&quot;%d%d%d%d&quot;, &amp;n, &amp;m, &amp;s, &amp;d);
+    for (int i = 0; i &lt; m; i++){
+        int a, b,c,d;
+        scanf(&quot;%d%d%d%d&quot;, &amp;a, &amp;b,&amp;c,&amp;d);
+        G[a][b] =G[b][a]= c;
+        cost[a][b] = cost[b][a]=d;
+    }
+    dijsktra(s);
+    dfs(d);
+    for (int i = path.size() - 1; i &gt;= 1;i--){
+        printf(&quot;%d &quot;, path[i]);
+    }
+    printf(&quot;%d %d %d&quot;,d, dis[d], mincost);
+}
+</code></pre><h4 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h4><ul>
+<li>Djikstra+Dfs</li>
 </ul>
-<blockquote>
-<p><em>2—初始化以及配置</em></p>
-</blockquote>
-<ul>
-<li><p>安装成功后，选择好合适的保存博客内容的文件夹,执行 <code>hexo init</code>便会安装相关依赖完成初始化, <em>一定要在git里面执行</em>,在DOS里执行不会成功创建相应文件夹，之前被坑惨。。。</p>
-</li>
-<li><p>之后进入 <code>_config.yml</code> 进行配置,其他相应属性都没什么，网上搜索即可知道对应的作用，主要是最后的部署配置项:</p>
-</li>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ul>
+<li>统计路径条数dijstra中就可以解决</li>
+<li>一般题目会在当找到最短路径后，需要有第二尺度来选择最优解时：</li>
 </ul>
-<blockquote>
-<p>deploy:<br>type: github<br>repository: <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:Yourname/Yourname.git.io.git<br>branch: master</p>
-</blockquote>
-<p> 这里有三个坑：</p>
 <ol>
-<li>在每个属性后面都要空一格</li>
-<li>因为github配置了ssh密匙,所以我的repository用的ssh地址的方式。之前https的方式一直报错，越改越错…可能是git的功力不够深厚</li>
-<li>在github创建repository时,取名方式为： <em>Yourname.github.io</em>,名字不按规则会导致部署Git page时目录错误，比如之前我的仓库名是Yourname.git.io,部署完成后博客路径为<a href="https://Yourname.github.io/Yourname.git.io" target="_blank" rel="noopener">https://Yourname.github.io/Yourname.git.io</a>, 样式全部丢失(???)。</li>
-</ol>
-<blockquote>
-<p><em>3—部署</em></p>
-</blockquote>
-<ol>
-<li>执行 <code>hexo g</code> 生成页面, <code>hexo s</code>在localhost：4000查看效果, <code>hexo d</code>执行部署</li>
-<li>在github中进入博客的repository的Settings,找到GitHub Pages,选择master,然后save,大约一分钟博客成功部署。但是一般来说 <code>hexo d</code> 后就自动设定好了,第二步可作为检索差错的一个方法。</li>
+<li>只有点权择优的题只用Djikstra，例如A1003：“路径最短的情况下统计物资最多”的题。</li>
+<li>根据边权以及统计具体路径的情况需要Djikstra+Dfs，例如A1030“路径最短情况下计算旅游费用的最小开销以及具体路径”</li>
 </ol>
 
     </article>
@@ -440,9 +514,9 @@ height:50vh;
     
         <div class="license-wrapper">
             <p>原文作者：<a href="https://jmyok.github.io">BobJiang</a>
-            <p>原文链接：<a href="https://jmyok.github.io/2018/07/23/hexo搭建博客/">https://jmyok.github.io/2018/07/23/hexo搭建博客/</a>
-            <p>发表日期：<a href="https://jmyok.github.io/2018/07/23/hexo搭建博客/">July 23rd 2018, 3:05:36 pm</a>
-            <p>更新日期：<a href="https://jmyok.github.io/2018/07/23/hexo搭建博客/">September 29th 2018, 4:14:26 pm</a>
+            <p>原文链接：<a href="https://jmyok.github.io/2019/02/28/1030-Travel-Plan-（30-分）-dijkstra模版/">https://jmyok.github.io/2019/02/28/1030-Travel-Plan-（30-分）-dijkstra模版/</a>
+            <p>发表日期：<a href="https://jmyok.github.io/2019/02/28/1030-Travel-Plan-（30-分）-dijkstra模版/">February 28th 2019, 11:20:02 pm</a>
+            <p>更新日期：<a href="https://jmyok.github.io/2019/02/28/1030-Travel-Plan-（30-分）-dijkstra模版/">February 28th 2019, 11:41:44 pm</a>
             <p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     
@@ -450,17 +524,12 @@ height:50vh;
     <ul class="post-paginator">
         <li class="next">
             
-                <div class="nextSlogan">Next Post</div>
-                <a href= "/2018/07/23/如何建立自己的知识体系/" title= "如何建立自己的知识体系">
-                    <div class="nextTitle">如何建立自己的知识体系</div>
-                </a>
-            
         </li>
         <li class="previous">
             
                 <div class="prevSlogan">Previous Post</div>
-                <a href= "/2017/10/07/Laravel开发中问题/" title= "Laravel开发中问题">
-                    <div class="prevTitle">Laravel开发中问题</div>
+                <a href= "/2019/02/21/PAT甲-1146-Topological-Order-（25-分）/" title= "PAT甲-1146 Topological Order （25 分）">
+                    <div class="prevTitle">PAT甲-1146 Topological Order （25 分）</div>
                 </a>
             
         </li>
@@ -579,7 +648,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#hexo精简搭建流程及问题（windows）"><span class="toc-number">1.</span> <span class="toc-text"> hexo精简搭建流程及问题（windows） </span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1030-Travel-Plan-（30-分）"><span class="toc-number">1.</span> <span class="toc-text">1030 Travel Plan （30 分）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Input-Specification"><span class="toc-number">2.</span> <span class="toc-text">Input Specification:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Output-Specification"><span class="toc-number">3.</span> <span class="toc-text">Output Specification:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Sample-Input"><span class="toc-number">4.</span> <span class="toc-text">Sample Input:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Sample-Output"><span class="toc-number">5.</span> <span class="toc-text">Sample Output:</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#代码"><span class="toc-number">5.1.</span> <span class="toc-text">代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#知识点"><span class="toc-number">5.2.</span> <span class="toc-text">知识点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#总结"><span class="toc-number">5.3.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
