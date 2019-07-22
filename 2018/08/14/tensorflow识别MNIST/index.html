@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="">
+    <!-- title -->
+
+
+
+
+<!-- keywords -->
+
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
+    <meta name="author" content="BobJiang">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="BobJiang">
+    
+    <meta name="keywords" content="hexo,Bobjiang,Machine learning,data analytics,data mining">
+    
+    <meta name="description" content="">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>tensorflow识别MNIST · JMYok&#39;s Blog</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href= "/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link rel="stylesheet" href= "/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href= "/assets/guitar.png" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script" />
+    <link rel="preload" href="/scripts/main.js" as="script" />
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+</head>
+
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Welcome To Bob&#39;s Space.</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">tensorflow识别MNIST</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>Welcome To Bob's Space.</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+
+height:50vh;
+">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            tensorflow识别MNIST
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "tensorflow">tensorflow</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">2,723</span>阅读时长: <span class="post-count reading-time">12 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2018/08/14</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <h3 id="数据准备"><a href="#数据准备" class="headerlink" title="数据准备"></a>数据准备</h3><p>简单的说，MNIST就是一组最基础的数据集，M代表Modified,NIST代表国家标准和技术研究所，包括从0~9的训练数字的图片，这个分类问题是机器学习最简单和最广泛使用的测试之一。</p>
+<h4 id="1、引入MNIST数据集"><a href="#1、引入MNIST数据集" class="headerlink" title="1、引入MNIST数据集"></a>1、引入MNIST数据集</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from tensorflow.examples.tutorials.mnist import input_data</span><br></pre></td></tr></table></figure>
+<p>从MNIST_data/中读取MNIST数据。这条语句在数据不存在时，会自动执行下载</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mnist = input_data.read_data_sets(&quot;MNIST_data/&quot;, one_hot=True)</span><br></pre></td></tr></table></figure>
+<h5 id="查看训练数据的大小"><a href="#查看训练数据的大小" class="headerlink" title="查看训练数据的大小"></a>查看训练数据的大小</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(mnist.train.images.shape)  # (55000, 784)</span><br><span class="line">print(mnist.train.labels.shape)  # (55000, 10)</span><br></pre></td></tr></table></figure>
+<h5 id="查看验证数据的大小"><a href="#查看验证数据的大小" class="headerlink" title="查看验证数据的大小"></a>查看验证数据的大小</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(mnist.validation.images.shape)  # (5000, 784)</span><br><span class="line">print(mnist.validation.labels.shape)  # (5000, 10)</span><br></pre></td></tr></table></figure>
+<h5 id="查看测试数据的大小"><a href="#查看测试数据的大小" class="headerlink" title="查看测试数据的大小"></a>查看测试数据的大小</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(mnist.test.images.shape)  # (10000, 784)</span><br><span class="line">print(mnist.test.labels.shape)  # (10000, 10)</span><br></pre></td></tr></table></figure>
+<p>将MNIST官网下载的四个数据包放在MNIST_data中。不需要解压，不需要解压，不需要解压。</p>
+<p>若没有数据包，Tensorflow会检测到并且会自动下载到MNIST_data文件夹中。</p>
+<h4 id="2、保存前30条数据的原始图片"><a href="#2、保存前30条数据的原始图片" class="headerlink" title="2、保存前30条数据的原始图片"></a>2、保存前30条数据的原始图片</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import scipy.misc</span><br><span class="line">import os</span><br></pre></td></tr></table></figure>
+<p>我们把原始图片保存在MNIST_data/raw/文件夹下</p>
+<p>如果没有这个文件夹会自动创建</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">save_dir = &apos;MNIST_data/raw/&apos;</span><br><span class="line">if os.path.exists(save_dir) is False:</span><br><span class="line">    os.makedirs(save_dir)</span><br></pre></td></tr></table></figure>
+<h5 id="保存前30张图片"><a href="#保存前30张图片" class="headerlink" title="保存前30张图片"></a>保存前30张图片</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">for i in range(30):</span><br><span class="line">    # 请注意，mnist.train.images[i, :]就表示第i张图片（序号从0开始）</span><br><span class="line">    image_array = mnist.train.images[i, :]</span><br><span class="line">    # TensorFlow中的MNIST图片是一个784维的向量，我们重新把它还原为28x28维的图像。</span><br><span class="line">    image_array = image_array.reshape(28, 28)</span><br><span class="line">    # 保存文件的格式为 mnist_train_0.jpg, mnist_train_1.jpg, ... ,mnist_train_19.jpg</span><br><span class="line">    filename = save_dir + &apos;mnist_train_%d.jpg&apos; % i</span><br><span class="line">    # 将image_array保存为图片</span><br><span class="line">    # 先用scipy.misc.toimage转换为图像，再调用save直接保存。</span><br><span class="line">    scipy.misc.toimage(image_array, cmin=0.0, cmax=1.0).save(filename)</span><br><span class="line"></span><br><span class="line">print(&apos;Please check: %s &apos; % save_dir)</span><br></pre></td></tr></table></figure>
+<h3 id="一、softmax实现单神经元模型"><a href="#一、softmax实现单神经元模型" class="headerlink" title="一、softmax实现单神经元模型"></a>一、softmax实现单神经元模型</h3><h5 id="1、初始化变量"><a href="#1、初始化变量" class="headerlink" title="1、初始化变量"></a>1、初始化变量</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line">x = tf.placeholder(tf.float32,[None,784])</span><br><span class="line">W = tf.Variable(tf.zeros([784,10]))</span><br><span class="line">b = tf.Variable(tf.zeros([10]))</span><br><span class="line">y = tf.nn.softmax(tf.matmul(x,W)+b)</span><br><span class="line">y_ = tf.placeholder(tf.float32,[None,10])</span><br></pre></td></tr></table></figure>
+<p>因为图片是28x28像素的，所以1张图片，即x中的一张图片转化成（1,784）的向量，它的便签值y_也转化为向量（1，10）。</p>
+<p>因为不确定样本的数量，所以用“<strong>占位符（placeholder）</strong>”占据一定形式的内存空间，等待用户传值来决定具体的样本数量。我理解成一个有784个小格子高度的容器，由用户来决定有多少个这样的容器。</p>
+<p>w,b为“<strong>变量</strong>”，规定了维度具体大小，即规定了有784个10个格子高度的容器，并把格子中装的值初始化为0。</p>
+<p>因为x的值是固定的，所以预测值y的值主要由w,b来决定。</p>
+<h5 id="思考："><a href="#思考：" class="headerlink" title="思考："></a>思考：</h5><p>a、占位符和变量的区别是什么？</p>
+<p>b、什么是softmax？为什么使用softmax？</p>
+<h5 id="2、向前传播以及损失函数"><a href="#2、向前传播以及损失函数" class="headerlink" title="2、向前传播以及损失函数"></a>2、向前传播以及损失函数</h5><p>为了确定预测的y与标签值y_的差距，需要定义cost function去评估预测的准确性，即算法的优良性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cross_entropy =  tf.reduce_mean(-tf.reduce_sum(y_*tf.log(y)))</span><br></pre></td></tr></table></figure>
+<h4 id="思考：-1"><a href="#思考：-1" class="headerlink" title="思考："></a>思考：</h4><p>a、该损失函数的具体原理是什么？</p>
+<h5 id="3、向后传播以及优化参数"><a href="#3、向后传播以及优化参数" class="headerlink" title="3、向后传播以及优化参数"></a>3、向后传播以及优化参数</h5><p>为了最小化损失函数，需要向后传播计算出dw以及db，即w和b对损失函数的影响程度，然后通过w-学习率<em>dw、b-学习率</em>db更新w和b的值。当然，Tensorflow将这两步通过一行代码同时实现了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">train_step = tf.train.GradientDescentOptimizer(0.01).minimize(cross_entropy)</span><br></pre></td></tr></table></figure>
+<p>代码中<strong>学习率</strong>为0.01</p>
+<h5 id="4、开始训练"><a href="#4、开始训练" class="headerlink" title="4、开始训练"></a>4、开始训练</h5><p>首先初始化所有变量并申请内存空间：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">init = tf.global_variables_initializer()</span><br><span class="line">sess = tf.Session()</span><br><span class="line">sess.run(init)</span><br></pre></td></tr></table></figure>
+<p>之后，梯度下降1000步：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for _ in range(1000):</span><br><span class="line">    batch_xs,batch_ys = mnist.train.next_batch(100)</span><br><span class="line">    sess.run(train_step,feed_dict=&#123;x:batch_xs,y_:batch_ys&#125;)</span><br></pre></td></tr></table></figure>
+<p>运行完后，模型便已被训练完成了，即参数w，b已经被训练好，尽可能的使y（预测值）接近y_（标签纸）,在损失函数的图像上，使值尽可能的接近最凹的点，即最优的点。</p>
+<h5 id="5、评估模型"><a href="#5、评估模型" class="headerlink" title="5、评估模型"></a>5、评估模型</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">correct_prediction = tf.equal(tf.argmax(y,1),tf.argmax(y_,1))</span><br><span class="line">accuracy = tf.reduce_mean(tf.cast(correct_prediction,tf.float32))</span><br><span class="line">print(sess.run(accuracy,feed_dict=&#123;x:mnist.test.images,y_:mnist.test.labels&#125;))</span><br></pre></td></tr></table></figure>
+<p>输出<br>0.9168</p>
+<h5 id="思考：-2"><a href="#思考：-2" class="headerlink" title="思考："></a>思考：</h5><p>a、为什么使用tf.argmax来进行评估？</p>
+<h4 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h4><h5 id="1、占位符和变量的区别是什么？"><a href="#1、占位符和变量的区别是什么？" class="headerlink" title="1、占位符和变量的区别是什么？"></a>1、占位符和变量的区别是什么？</h5><p>占位符和变量都属于Tensor(张量：一个数组中的元素分布在若干维的规则网格中，则称之为张量)。</p>
+<p>占位符不依赖于其他Tensor，具体的值由用户传入，一般用来存储样本数据和标签值。</p>
+<p>变量是计算过程中可以改变的值，每次计算后变量的值都会被保存下来，一般用来存储模型的参数。</p>
+<h5 id="2、什么是softmax？为什么使用softmax？"><a href="#2、什么是softmax？为什么使用softmax？" class="headerlink" title="2、什么是softmax？为什么使用softmax？"></a>2、什么是softmax？为什么使用softmax？</h5><p>softmax函数是用于区分多个类别的函数，例如，对（a，b，c）三个类别进行softmax后，每个类别的概率为（,,）,每个数值都在0-1，并且和为1。</p>
+<p>相比于“hardmax”只将值表示为0或者1，softmax更详细的输出了每个类别的概率并且能够进行多个类别的判断，所以这里使用它。</p>
+<h5 id="3、tf-reduce-mean-tf-reduce-sum-y-tf-log-y-损失函数的具体原理是什么？"><a href="#3、tf-reduce-mean-tf-reduce-sum-y-tf-log-y-损失函数的具体原理是什么？" class="headerlink" title="3、tf.reduce_mean(-tf.reduce_sum(y_*tf.log(y)))损失函数的具体原理是什么？"></a>3、tf.reduce_mean(-tf.reduce_sum(y_*tf.log(y)))损失函数的具体原理是什么？</h5><p>只从代码来看表示将   公式的矩阵中所有值求和最后再求平均值。因为y的值肯定在0-1之间，为了保证损失值为正，添加符号取负。</p>
+<p>若要损失函数的值最小：</p>
+<p>当y_向量中某元素为0时，具体含义表示该图片不是某一张图，该项的损失函数值也为0，即相当于最后将10个类别的损失值求和的时候不考虑。</p>
+<p>当y_向量中某元素为1时，只有当y的对应元素的值尽可能的接近1时，才尽可能最小，即尽可能接近0。所有让损失值最小的过程就是让预测值y的值无限接近真实值的情况。</p>
+<h5 id="4、为什么使用tf-argmax（y-1）来进行评估？"><a href="#4、为什么使用tf-argmax（y-1）来进行评估？" class="headerlink" title="4、为什么使用tf.argmax（y,1）来进行评估？"></a>4、为什么使用tf.argmax（y,1）来进行评估？</h5><p>该函数表示取得最大值的下标，而值最大的元素的下标值就表示图片中真实数字的值。所以tf.argmax(y_,1)取得的下标值为真实图片的数字值，例如[0,2,7,1]；tf.argmax(y,1)取得y向量中，对每个类别的预测值里最大值的下标值，即预测的图片的数字值，例如[8,2,7,5]。最后tf.equal进行比较，得到类似[0,1,1,0]的数组，通过tf.reduce_mean得到平均值0.5，表示预测准确率。</p>
+<h3 id="二、两层卷积网络分类"><a href="#二、两层卷积网络分类" class="headerlink" title="二、两层卷积网络分类"></a>二、两层卷积网络分类</h3><p>采用单神经元进行预测，最后的准确率为大约为91.6%，采用卷积网络进行图片识别可将准确率提高到99%</p>
+<h5 id="1、初始化变量-1"><a href="#1、初始化变量-1" class="headerlink" title="1、初始化变量"></a>1、初始化变量</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import tensorflow as tf</span><br><span class="line">from tensorflow.examples.tutorials.mnist import input_data</span><br><span class="line"></span><br><span class="line">#读入数据</span><br><span class="line">mnist = input_data.read_data_sets(&quot;MNIST_data/&quot;,one_hot=True)</span><br><span class="line"></span><br><span class="line">#创建占位符</span><br><span class="line">x = tf.placeholder(tf.float32,[None,784])</span><br><span class="line">y_ = tf.placeholder(tf.float32,[None,10])</span><br><span class="line"></span><br><span class="line">#将向量还原,-1表示第一维度由x的具体数据确定，即由x的矩阵中样本个数来确定</span><br><span class="line">x_image = tf.reshape(x,[-1,28,28,1])</span><br></pre></td></tr></table></figure>
+<h4 id="2、预定义函数"><a href="#2、预定义函数" class="headerlink" title="2、预定义函数"></a>2、预定义函数</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">def weight_variable(shape):</span><br><span class="line">    inital = tf.truncated_normal(shape)</span><br><span class="line">    return tf.Variable(inital)</span><br><span class="line"></span><br><span class="line">def bias_variable(shape):</span><br><span class="line">    inital =tf.constant(0.1,shape=shape)</span><br><span class="line">    return tf.Variable(inital)</span><br><span class="line"></span><br><span class="line">def conv2d(x,W):</span><br><span class="line">    return tf.nn.conv2d(x,W,strides=[1,1,1,1],padding=&apos;SAME&apos;)</span><br><span class="line"></span><br><span class="line">def max_pool_2x2(x):</span><br><span class="line">    return tf.nn.max_pool(x, ksize=[1,2,2,1],strides=[1,2,2,1], padding=&apos;SAME&apos;)</span><br></pre></td></tr></table></figure>
+<p>分别表示得到一定维度的参数，指定值的偏执项，卷积函数，2x2最大池化函数。</p>
+<p>这里池化函数的过滤器为2x2，步长为2x2,当为此情况时，输出图片的维度是输入图片维度的一半。</p>
+<h5 id="3、卷积层"><a href="#3、卷积层" class="headerlink" title="3、卷积层"></a>3、卷积层</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#第一卷积层</span><br><span class="line">w_conv1 = weight_variable([5, 5, 1, 32])</span><br><span class="line">b_conv1 = bias_variable([32])</span><br><span class="line">h_conv1 = tf.nn.relu(conv2d(x_image, w_conv1) + b_conv1)</span><br><span class="line">h_pool1 = max_pool_2x2(h_conv1)</span><br><span class="line"></span><br><span class="line">#第二卷积层</span><br><span class="line">w_conv2 = weight_variable([5, 5, 32, 64])</span><br><span class="line">b_conv2 = bias_variable([64])</span><br><span class="line">h_conv2 = tf.nn.relu(conv2d(h_pool1, w_conv2) + b_conv2)</span><br><span class="line">h_pool2 = max_pool_2x2(h_conv2)</span><br></pre></td></tr></table></figure>
+<h5 id="第一卷积层："><a href="#第一卷积层：" class="headerlink" title="第一卷积层："></a>第一卷积层：</h5><p>32个5x5的卷积核进行卷积，padding为same，所以h_conv1的维度为(-1,28,28,32)，-1表示该维度由具体样本数量决定；最后经过2x2最大池化卷积，得到h_pool，维度为（-1,14,14,32）</p>
+<h5 id="第二卷积层："><a href="#第二卷积层：" class="headerlink" title="第二卷积层："></a>第二卷积层：</h5><p>进行立体卷积，立体卷积时要保证卷积核的通道数与将要处理图片的通道数相同，所以卷积核维度为(5,5,32)，有64个卷积核。h_conv2的维度为(-1,14,14,64)，经过2x2池化层后，h_pool2的维度为(-1,7,7,64)</p>
+<h5 id="4、全连接层"><a href="#4、全连接层" class="headerlink" title="4、全连接层"></a>4、全连接层</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#全连接层</span><br><span class="line">w_fc1 = weight_variable([7*7*64,1024])</span><br><span class="line">b_fc1 = bias_variable([1024])</span><br><span class="line">h_pool2_flat = tf.reshape(h_pool2, [-1, 7*7*64])</span><br><span class="line">h_fc1 = tf.nn.relu(tf.matmul(h_pool2_flat, w_fc1)+ b_fc1)</span><br><span class="line"></span><br><span class="line">#使用dropout</span><br><span class="line">keep_prob = tf.placeholder(tf.float32)</span><br><span class="line">h_fc1_drop = tf.nn.dropout(h_fc1, keep_prob)</span><br><span class="line"></span><br><span class="line">#最后一层全连接层</span><br><span class="line">w_fc2 = weight_variable([1024, 10])</span><br><span class="line">b_fc2 = bias_variable([10])</span><br><span class="line">y_conv = tf.matmul(h_fc1_drop,w_fc2)+b_fc2</span><br></pre></td></tr></table></figure>
+<h5 id="第一层全连接层："><a href="#第一层全连接层：" class="headerlink" title="第一层全连接层："></a>第一层全连接层：</h5><p>将h_pool2后三维转化成一维向量，输出1024维的向量；使用dropout，每一步训练时，一定概率的去掉全连接层中某些连接，防止过度拟合。</p>
+<h5 id="第二层全连接层："><a href="#第二层全连接层：" class="headerlink" title="第二层全连接层："></a>第二层全连接层：</h5><p>将1024维度h_fc1_drop转化为10个类别的打分。</p>
+<h5 id="5、定义交叉熵损失以及测试的准确率"><a href="#5、定义交叉熵损失以及测试的准确率" class="headerlink" title="5、定义交叉熵损失以及测试的准确率"></a>5、定义交叉熵损失以及测试的准确率</h5><p>y_conv相当于softmax的logit（即wx+b），所以当然可以用softmax定义将其转换为10个类别的概率，再定义交叉熵损失。但是tensorflow有打包好的函数，直接对logit定义交叉熵损失： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cross_entropy =  tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits_v2(labels=y_,logits=y_conv))</span><br><span class="line"> 取预测后结果的平均值得到准确率：</span><br><span class="line"></span><br><span class="line">correct_prediction = tf.equal(tf.argmax(y_conv,1),tf.argmax(y_,1))</span><br><span class="line">accuracy = tf.reduce_mean(tf.cast(correct_prediction,tf.float32))</span><br></pre></td></tr></table></figure>
+<h5 id="6、开始训练"><a href="#6、开始训练" class="headerlink" title="6、开始训练"></a>6、开始训练</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#创建Session，对变量初始化</span><br><span class="line">sess = tf.InteractiveSession()</span><br><span class="line">sess.run(tf.global_variables_initializer())</span><br><span class="line"></span><br><span class="line"># 训练20000步</span><br><span class="line">for i in range(20000):</span><br><span class="line">    batch = mnist.train.next_batch(50)</span><br><span class="line">    # 每100步报告一次在验证集上的准确度</span><br><span class="line">    if i % 100 == 0:</span><br><span class="line">        train_accuracy = accuracy.eval(feed_dict=&#123;x: batch[0], y_: batch[1], keep_prob: 1.0&#125;)</span><br><span class="line">        print(&quot;step %d, training accuracy %g&quot; % (i, train_accuracy))</span><br><span class="line">    train_step.run(feed_dict=&#123;x: batch[0], y_: batch[1], keep_prob: 0.5&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 训练结束后报告在测试集上的准确度</span><br><span class="line">print(&quot;test accuracy %g&quot; % accuracy.eval(feed_dict=&#123;x: mnist.test.images, y_: mnist.test.labels, keep_prob: 1.0&#125;))</span><br></pre></td></tr></table></figure>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>主要完成了Tesorflow建立Softmax回归模型以及两层卷积的神经网络，了解如何读入数据集以及Tensorflow建立模型的基本流程：</li>
+<li>创建还没有执行的tensor（以及自定义辅助函数）</li>
+<li>给tensor间书写逻辑</li>
+<li>初始化各个tensor</li>
+<li>建立以及运行会话</li>
+</ul>
+
+    </article>
+    <!-- license  -->
+    
+        <div class="license-wrapper">
+            <p>原文作者：<a href="https://jmyok.github.io">BobJiang</a>
+            <p>原文链接：<a href="https://jmyok.github.io/2018/08/14/tensorflow识别MNIST/">https://jmyok.github.io/2018/08/14/tensorflow识别MNIST/</a>
+            <p>发表日期：<a href="https://jmyok.github.io/2018/08/14/tensorflow识别MNIST/">August 14th 2018, 3:07:24 pm</a>
+            <p>更新日期：<a href="https://jmyok.github.io/2018/08/14/tensorflow识别MNIST/">July 22nd 2019, 11:27:47 am</a>
+            <p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    
+    <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2018/09/17/激活函数的选择/" title= "激活函数的选择">
+                    <div class="nextTitle">激活函数的选择</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2018/07/24/Localhexonotfound/" title= "Localhexonotfound引起的问题">
+                    <div class="prevTitle">Localhexonotfound引起的问题</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:374123140@qq.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/JMYok" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title=wechat>
+                  
+                  <img class="profile-qr" src="/assets/example_qr.png" />
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+    <div class="busuanzi-container">
+    
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+    
+    </div>
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#数据准备"><span class="toc-number">1.</span> <span class="toc-text">数据准备</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1、引入MNIST数据集"><span class="toc-number">1.1.</span> <span class="toc-text">1、引入MNIST数据集</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#查看训练数据的大小"><span class="toc-number">1.1.1.</span> <span class="toc-text">查看训练数据的大小</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#查看验证数据的大小"><span class="toc-number">1.1.2.</span> <span class="toc-text">查看验证数据的大小</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#查看测试数据的大小"><span class="toc-number">1.1.3.</span> <span class="toc-text">查看测试数据的大小</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、保存前30条数据的原始图片"><span class="toc-number">1.2.</span> <span class="toc-text">2、保存前30条数据的原始图片</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#保存前30张图片"><span class="toc-number">1.2.1.</span> <span class="toc-text">保存前30张图片</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一、softmax实现单神经元模型"><span class="toc-number">2.</span> <span class="toc-text">一、softmax实现单神经元模型</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1、初始化变量"><span class="toc-number">2.0.1.</span> <span class="toc-text">1、初始化变量</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#思考："><span class="toc-number">2.0.2.</span> <span class="toc-text">思考：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2、向前传播以及损失函数"><span class="toc-number">2.0.3.</span> <span class="toc-text">2、向前传播以及损失函数</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#思考：-1"><span class="toc-number">2.1.</span> <span class="toc-text">思考：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3、向后传播以及优化参数"><span class="toc-number">2.1.1.</span> <span class="toc-text">3、向后传播以及优化参数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4、开始训练"><span class="toc-number">2.1.2.</span> <span class="toc-text">4、开始训练</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5、评估模型"><span class="toc-number">2.1.3.</span> <span class="toc-text">5、评估模型</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#思考：-2"><span class="toc-number">2.1.4.</span> <span class="toc-text">思考：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#补充"><span class="toc-number">2.2.</span> <span class="toc-text">补充</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1、占位符和变量的区别是什么？"><span class="toc-number">2.2.1.</span> <span class="toc-text">1、占位符和变量的区别是什么？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2、什么是softmax？为什么使用softmax？"><span class="toc-number">2.2.2.</span> <span class="toc-text">2、什么是softmax？为什么使用softmax？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3、tf-reduce-mean-tf-reduce-sum-y-tf-log-y-损失函数的具体原理是什么？"><span class="toc-number">2.2.3.</span> <span class="toc-text">3、tf.reduce_mean(-tf.reduce_sum(y_*tf.log(y)))损失函数的具体原理是什么？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4、为什么使用tf-argmax（y-1）来进行评估？"><span class="toc-number">2.2.4.</span> <span class="toc-text">4、为什么使用tf.argmax（y,1）来进行评估？</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、两层卷积网络分类"><span class="toc-number">3.</span> <span class="toc-text">二、两层卷积网络分类</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1、初始化变量-1"><span class="toc-number">3.0.1.</span> <span class="toc-text">1、初始化变量</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、预定义函数"><span class="toc-number">3.1.</span> <span class="toc-text">2、预定义函数</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3、卷积层"><span class="toc-number">3.1.1.</span> <span class="toc-text">3、卷积层</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#第一卷积层："><span class="toc-number">3.1.2.</span> <span class="toc-text">第一卷积层：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#第二卷积层："><span class="toc-number">3.1.3.</span> <span class="toc-text">第二卷积层：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4、全连接层"><span class="toc-number">3.1.4.</span> <span class="toc-text">4、全连接层</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#第一层全连接层："><span class="toc-number">3.1.5.</span> <span class="toc-text">第一层全连接层：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#第二层全连接层："><span class="toc-number">3.1.6.</span> <span class="toc-text">第二层全连接层：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5、定义交叉熵损失以及测试的准确率"><span class="toc-number">3.1.7.</span> <span class="toc-text">5、定义交叉熵损失以及测试的准确率</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6、开始训练"><span class="toc-number">3.1.8.</span> <span class="toc-text">6、开始训练</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li></ol>
+    </div>
+    
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 10
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/22</span><a class="archive-post-title" href= "/2019/07/22/PAT1159/" >PAT甲1159 Structure of a Binary Tree （30分）</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/22</span><a class="archive-post-title" href= "/2019/07/22/PAT1158/" >PAT甲1158 Telefraud Detection（25分）</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/28</span><a class="archive-post-title" href= "/2019/02/28/PAT甲-1030-Travel-Plan-（30-分）-dijkstra模版/" >PAT甲-1030 Travel Plan （30 分）[dijkstra模版]</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/21</span><a class="archive-post-title" href= "/2019/02/21/PAT甲-1146-Topological-Order-（25-分）/" >PAT甲-1146 Topological Order （25 分）</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2018 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/17</span><a class="archive-post-title" href= "/2018/09/17/激活函数的选择/" >激活函数的选择</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/14</span><a class="archive-post-title" href= "/2018/08/14/tensorflow识别MNIST/" >tensorflow识别MNIST</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/24</span><a class="archive-post-title" href= "/2018/07/24/Localhexonotfound/" >Localhexonotfound引起的问题</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/23</span><a class="archive-post-title" href= "/2018/07/23/如何建立自己的知识体系/" >如何建立自己的知识体系</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/23</span><a class="archive-post-title" href= "/2018/07/23/hexo搭建博客/" >hexo搭建博客</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2017 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/07</span><a class="archive-post-title" href= "/2017/10/07/Laravel开发中问题/" >Laravel开发中问题</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="并查集 PAT甲"><span class="iconfont-archer">&#xe606;</span>并查集 PAT甲</span>
+    
+        <span class="sidebar-tag-name" data-tags="PAT甲 树 字符串"><span class="iconfont-archer">&#xe606;</span>PAT甲 树 字符串</span>
+    
+        <span class="sidebar-tag-name" data-tags="PAT甲级"><span class="iconfont-archer">&#xe606;</span>PAT甲级</span>
+    
+        <span class="sidebar-tag-name" data-tags="hexo"><span class="iconfont-archer">&#xe606;</span>hexo</span>
+    
+        <span class="sidebar-tag-name" data-tags="tensorflow 图像识别"><span class="iconfont-archer">&#xe606;</span>tensorflow 图像识别</span>
+    
+        <span class="sidebar-tag-name" data-tags="激活函数"><span class="iconfont-archer">&#xe606;</span>激活函数</span>
+    
+        <span class="sidebar-tag-name" data-tags="填坑之旅"><span class="iconfont-archer">&#xe606;</span>填坑之旅</span>
+    
+        <span class="sidebar-tag-name" data-tags="学习能力"><span class="iconfont-archer">&#xe606;</span>学习能力</span>
+    
+        <span class="sidebar-tag-name" data-tags="tensorflow  图像识别"><span class="iconfont-archer">&#xe606;</span>tensorflow  图像识别</span>
+    
+        <span class="sidebar-tag-name" data-tags="PAT甲"><span class="iconfont-archer">&#xe606;</span>PAT甲</span>
+    
+        <span class="sidebar-tag-name" data-tags="tensorflow"><span class="iconfont-archer">&#xe606;</span>tensorflow</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="数据结构"><span class="iconfont-archer">&#xe60a;</span>数据结构</span>
+    
+        <span class="sidebar-category-name" data-categories="填坑之旅"><span class="iconfont-archer">&#xe60a;</span>填坑之旅</span>
+    
+        <span class="sidebar-category-name" data-categories="机器学习"><span class="iconfont-archer">&#xe60a;</span>机器学习</span>
+    
+        <span class="sidebar-category-name" data-categories="技术干货-机器学习"><span class="iconfont-archer">&#xe60a;</span>技术干货-机器学习</span>
+    
+        <span class="sidebar-category-name" data-categories="其它汇总"><span class="iconfont-archer">&#xe60a;</span>其它汇总</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "BobJiang"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
+     
+    </body>
+</html>
+
+

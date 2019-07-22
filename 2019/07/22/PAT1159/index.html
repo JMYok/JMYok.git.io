@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>JMYok&#39;s Blog</title>
+    <title>PAT甲1159 Structure of a Binary Tree （30分） · JMYok&#39;s Blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -203,12 +203,23 @@
 </head>
 
     
+        <body class="post-body">
+    
     
 <header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Welcome To Bob&#39;s Space.</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">PAT甲1159 Structure of a Binary Tree （30分）</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>Welcome To Bob's Space.</a>
 </header>
@@ -220,24 +231,74 @@
 
 
 
+
+height:50vh;
 ">
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
+            
+            PAT甲1159 Structure of a Binary Tree （30分）
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "PAT甲">PAT甲</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">928</span>阅读时长: <span class="post-count reading-time">6 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2019/07/22</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -338,44 +399,64 @@
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main index-page">
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/09/17/激活函数的选择/" >
-            
-                <span>激活函数的选择</span>
-        </a>
-        <div class="abstract-content">
-            几种不同的激活函数g(x)：
-激活函数的选择：
-sigmoid函数和tanh函数比较：
-隐藏层：tanh函数的表现要好于sigmoid函数，因为tanh取值范围为[−1,+1]，输出分布在0值的附近，均值为0，从隐藏层到输出层数据起到了归一化（均值为0）的效果。
-输出层：对于二分类任务的输出取值为{0,1}，故一般会选择sigmoid函数。然而sigmoid和tanh函数在当|z|很大的时候，梯度会很小，在依据梯度的算法中，更新在后期会变得很慢。在实际应用中，要使|z|尽可能的落在0值附近。
-ReLU弥补了前两者的缺陷，当z&gt;0时，梯度始终为1，从而提高神经网络基于梯度算法的运算速...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/09/17</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "激活函数">激活函数</a>
-    
-</div>
-            
-        </div>
+            <main class="main post-page">
+    <article class="article-entry">
+        <h5 id="Structure-of-a-Binary-Tree"><a href="#Structure-of-a-Binary-Tree" class="headerlink" title="Structure of a Binary Tree"></a>Structure of a Binary Tree</h5><p>Suppose that all the keys in a binary tree are distinct positive integers. Given the postorder and inorder traversal sequences, a binary tree can be uniquely determined.</p>
+<p>Now given a sequence of statements about the structure of the resulting tree, you are supposed to tell if they are correct or not. A statment is one of the following:</p>
+<ul>
+<li>A is the root</li>
+<li>A and B are siblings</li>
+<li>A is the parent of B</li>
+<li>A is the left child of B</li>
+<li>A is the right child of B</li>
+<li>A and B are on the same level</li>
+<li>It is a full tree<h4 id="Note"><a href="#Note" class="headerlink" title="Note:"></a>Note:</h4>Two nodes are on the same level, means that they have the same depth.<br>A full binary tree is a tree in which every node other than the leaves has two children.<h4 id="Input-Specification"><a href="#Input-Specification" class="headerlink" title="Input Specification:"></a>Input Specification:</h4>Each input file contains one test case. For each case, the first line gives a positive integer N (≤30), the total number of nodes in the binary tree. The second line gives the postorder sequence and the third line gives the inorder sequence. All the numbers in a line are no more than 10^​3<br>​​  and are separated by a space.</li>
+</ul>
+<p>Then another positive integer M (≤30) is given, followed by M lines of statements. It is guaranteed that both A and B in the statements are in the tree.</p>
+<h4 id="Output-Specification"><a href="#Output-Specification" class="headerlink" title="Output Specification:"></a>Output Specification:</h4><p>For each statement, print in a line Yes if it is correct, or No if not.</p>
+<h4 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input:"></a>Sample Input:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">9</span><br><span class="line">16 7 11 32 28 2 23 8 15</span><br><span class="line">16 23 7 32 11 2 28 15 8</span><br><span class="line">7</span><br><span class="line">15 is the root</span><br><span class="line">8 and 2 are siblings</span><br><span class="line">32 is the parent of 11</span><br><span class="line">23 is the left child of 16</span><br><span class="line">28 is the right child of 2</span><br><span class="line">7 and 11 are on the same level</span><br><span class="line">It is a full tree</span><br></pre></td></tr></table></figure>
+<h4 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output:"></a>Sample Output:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Yes</span><br><span class="line">No</span><br><span class="line">Yes</span><br><span class="line">No</span><br><span class="line">Yes</span><br><span class="line">Yes</span><br><span class="line">Yes</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;string&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;map&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int pos[40], in[40];</span><br><span class="line">map&lt;int, int&gt;siblings,leftc,rightc,parent,levels;</span><br><span class="line">bool isfulltree = true;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">struct node&#123;</span><br><span class="line">	int data;</span><br><span class="line">	node* lchild=NULL, *rchild=NULL;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">node* create(int posL, int posR, int inL, int inR)&#123;</span><br><span class="line">	if (posL &gt; posR)return NULL;</span><br><span class="line">	node *root = new node;</span><br><span class="line">	int key = pos[posR];</span><br><span class="line">	root-&gt;data = key;</span><br><span class="line">	int k = inL;</span><br><span class="line">	while (in[k] != key&amp;&amp;k &lt;= inR)k++;</span><br><span class="line">	int numLeft = k - inL;</span><br><span class="line">	root-&gt;lchild = create(posL, posL + numLeft - 1, inL, k - 1);</span><br><span class="line">	root-&gt;rchild = create(posL + numLeft, posR - 1, k + 1, inR);</span><br><span class="line">	return root;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//一次将所有结果搜索完</span><br><span class="line">void dfs(node* root, int level)&#123;</span><br><span class="line">	if (root == NULL)return;</span><br><span class="line">	levels[root-&gt;data] = level;</span><br><span class="line">	if ((root-&gt;lchild == NULL&amp;&amp;root-&gt;rchild != NULL) || (root-&gt;rchild == NULL&amp;&amp;root-&gt;lchild != NULL))isfulltree = false;</span><br><span class="line">	if (root-&gt;lchild != NULL||root-&gt;rchild!=NULL)&#123;</span><br><span class="line">		if (root-&gt;lchild != NULL)&#123;</span><br><span class="line">			leftc[root-&gt;data] = root-&gt;lchild-&gt;data;</span><br><span class="line">			parent[root-&gt;lchild-&gt;data] = root-&gt;data;</span><br><span class="line">			dfs(root-&gt;lchild, level + 1);</span><br><span class="line">		&#125;</span><br><span class="line">		if (root-&gt;rchild != NULL)&#123;</span><br><span class="line">			rightc[root-&gt;data] = root-&gt;rchild-&gt;data;</span><br><span class="line">			parent[root-&gt;rchild-&gt;data] = root-&gt;data;</span><br><span class="line">			dfs(root-&gt;rchild, level + 1);</span><br><span class="line">		&#125;</span><br><span class="line">		if (root-&gt;lchild != NULL &amp;&amp;root-&gt;rchild != NULL)&#123;</span><br><span class="line">			siblings[root-&gt;lchild-&gt;data] = root-&gt;rchild-&gt;data;</span><br><span class="line">			siblings[root-&gt;rchild-&gt;data] = root-&gt;lchild-&gt;data;</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">	int n,m;</span><br><span class="line">	scanf(&quot;%d&quot;, &amp;n);</span><br><span class="line">	for (int i = 0; i &lt; n; i++)scanf(&quot;%d&quot;, &amp;pos[i]);</span><br><span class="line">	for (int i = 0; i &lt; n; i++)scanf(&quot;%d&quot;, &amp;in[i]);</span><br><span class="line">	node *root = create(0, n - 1, 0, n - 1);</span><br><span class="line">	dfs(root, 1);</span><br><span class="line">	scanf(&quot;%d&quot;, &amp;m);</span><br><span class="line">	string q;</span><br><span class="line">	getchar();</span><br><span class="line">	for (int i = 0; i &lt; m; i++)&#123;</span><br><span class="line">		getline(cin, q);</span><br><span class="line">		if (q.find(&quot;root&quot;) != string::npos)&#123;</span><br><span class="line">			if (root-&gt;data == stoi(q.substr(0,q.size()-12)))printf(&quot;Yes\n&quot;);</span><br><span class="line">			else printf(&quot;No\n&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">		else if (q.find(&quot;full tree&quot;) != string::npos)&#123;</span><br><span class="line">			if (isfulltree)printf(&quot;Yes\n&quot;);</span><br><span class="line">			else printf(&quot;No\n&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">		else if (q.find(&quot;parent&quot;) != string::npos)&#123;</span><br><span class="line">			int a, b;</span><br><span class="line">			sscanf(q.c_str(), &quot;%d is the parent of %d&quot;, &amp;a, &amp;b);</span><br><span class="line">			printf(&quot;%s&quot;, parent[b] == a ? &quot;Yes\n&quot; : &quot;No\n&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">		else if (q.find(&quot;left child&quot;) != string::npos)&#123;</span><br><span class="line">			int a, b;</span><br><span class="line">			sscanf(q.c_str(), &quot;%d is the left child of %d&quot;, &amp;a, &amp;b);</span><br><span class="line">			printf(&quot;%s&quot;, leftc[b] == a ? &quot;Yes\n&quot; : &quot;No\n&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">		else if (q.find(&quot;siblings&quot;) != string::npos)&#123;</span><br><span class="line">			int a, b;</span><br><span class="line">			sscanf(q.c_str(), &quot;%d and %d are siblings&quot;, &amp;a, &amp;b);</span><br><span class="line">			printf(&quot;%s&quot;, siblings[b] == a ? &quot;Yes\n&quot; : &quot;No\n&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">		else if (q.find(&quot;right child&quot;) != string::npos)&#123;</span><br><span class="line">			int a, b;</span><br><span class="line">			sscanf(q.c_str(), &quot;%d is the right child of %d&quot;, &amp;a, &amp;b);</span><br><span class="line">			printf(&quot;%s&quot;, rightc[b] == a ? &quot;Yes\n&quot; : &quot;No\n&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">		else if (q.find(&quot;level&quot;) != string::npos)&#123;</span><br><span class="line">			int a, b;</span><br><span class="line">			sscanf(q.c_str(), &quot;%d and %d are on the same level&quot;, &amp;a, &amp;b);</span><br><span class="line">			printf(&quot;%s&quot;,  levels[a]==levels[b]? &quot;Yes\n&quot; : &quot;No\n&quot;);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="dfs搜索所有结果，关键是sscanf的运用，从字符串中提取数字。"><a href="#dfs搜索所有结果，关键是sscanf的运用，从字符串中提取数字。" class="headerlink" title="dfs搜索所有结果，关键是sscanf的运用，从字符串中提取数字。"></a>dfs搜索所有结果，关键是sscanf的运用，从字符串中提取数字。</h5>
     </article>
+    <!-- license  -->
+    
+        <div class="license-wrapper">
+            <p>原文作者：<a href="https://jmyok.github.io">BobJiang</a>
+            <p>原文链接：<a href="https://jmyok.github.io/2019/07/22/PAT1159/">https://jmyok.github.io/2019/07/22/PAT1159/</a>
+            <p>发表日期：<a href="https://jmyok.github.io/2019/07/22/PAT1159/">July 22nd 2019, 11:02:58 am</a>
+            <p>更新日期：<a href="https://jmyok.github.io/2019/07/22/PAT1159/">July 22nd 2019, 11:34:02 am</a>
+            <p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
     
     <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2019/07/22/PAT1158/" title= "PAT甲1158 Telefraud Detection（25分）">
+                    <div class="prevTitle">PAT甲1158 Telefraud Detection（25分）</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
     
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -460,6 +541,24 @@ ReLU弥补了前两者的缺陷，当z&gt;0时，梯度始终为1，从而提高
 </footer>
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#Structure-of-a-Binary-Tree"><span class="toc-number">1.</span> <span class="toc-text">Structure of a Binary Tree</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Note"><span class="toc-number"></span> <span class="toc-text">Note:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Input-Specification"><span class="toc-number"></span> <span class="toc-text">Input Specification:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Output-Specification"><span class="toc-number"></span> <span class="toc-text">Output Specification:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Sample-Input"><span class="toc-number"></span> <span class="toc-text">Sample Input:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Sample-Output"><span class="toc-number"></span> <span class="toc-text">Sample Output:</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#dfs搜索所有结果，关键是sscanf的运用，从字符串中提取数字。"><span class="toc-number">1.</span> <span class="toc-text">dfs搜索所有结果，关键是sscanf的运用，从字符串中提取数字。</span></a></li></ol>
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -747,6 +846,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
      
     </body>
 </html>

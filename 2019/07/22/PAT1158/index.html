@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>JMYok&#39;s Blog</title>
+    <title>PAT甲1158 Telefraud Detection（25分） · JMYok&#39;s Blog</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -203,12 +203,23 @@
 </head>
 
     
+        <body class="post-body">
+    
     
 <header class="header">
 
     <div class="read-progress"></div>
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Welcome To Bob&#39;s Space.</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">PAT甲1158 Telefraud Detection（25分）</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>Welcome To Bob's Space.</a>
 </header>
@@ -220,24 +231,74 @@
 
 
 
+
+height:50vh;
 ">
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
+            
+            PAT甲1158 Telefraud Detection（25分）
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "PAT甲">PAT甲</a>
+    
+</div>
+                
+                
+                    <div class="post-intro-read">
+                        <span>字数统计: <span class="post-count word-count">1,013</span>阅读时长: <span class="post-count reading-time">6 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                    <span class="post-intro-time">2019/07/22</span>
+                    
+                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                        <span class="iconfont-archer">&#xe602;</span>
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
+                    
+                    <span class="shareWrapper">
+                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
+                        <span class="shareText">Share</span>
+                        <ul class="shareList">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -338,44 +399,68 @@
 </script>        
         <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
         <div class="container container-unloaded">
-            <main class="main index-page">
-    
-    
-    
-    
-    
-    
-    <article class="index-post">
-        <a class="abstract-title" href = "/2018/09/17/激活函数的选择/" >
-            
-                <span>激活函数的选择</span>
-        </a>
-        <div class="abstract-content">
-            几种不同的激活函数g(x)：
-激活函数的选择：
-sigmoid函数和tanh函数比较：
-隐藏层：tanh函数的表现要好于sigmoid函数，因为tanh取值范围为[−1,+1]，输出分布在0值的附近，均值为0，从隐藏层到输出层数据起到了归一化（均值为0）的效果。
-输出层：对于二分类任务的输出取值为{0,1}，故一般会选择sigmoid函数。然而sigmoid和tanh函数在当|z|很大的时候，梯度会很小，在依据梯度的算法中，更新在后期会变得很慢。在实际应用中，要使|z|尽可能的落在0值附近。
-ReLU弥补了前两者的缺陷，当z&gt;0时，梯度始终为1，从而提高神经网络基于梯度算法的运算速...
-        </div>
-        <div class="abstract-post-meta">
-            <!-- date  -->
-            <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/09/17</span>
-            </div>
-            <!-- tags  -->
-            
-            <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "激活函数">激活函数</a>
-    
-</div>
-            
-        </div>
+            <main class="main post-page">
+    <article class="article-entry">
+        <h4 id="Telefraud-Detection"><a href="#Telefraud-Detection" class="headerlink" title="Telefraud Detection"></a>Telefraud Detection</h4><p>Telefraud（电信诈骗） remains a common and persistent problem in our society. In some cases, unsuspecting victims lose their entire life savings. To stop this crime, you are supposed to write a program to detect those suspects from a huge amount of phone call records.</p>
+<p>A person must be detected as a suspect if he/she makes more than K short phone calls to different people everyday, but no more than 20% of these people would call back. And more, if two suspects are calling each other, we say they might belong to the same gang. A makes a short phone call to B means that the total duration of the calls from A to B is no more than 5 minutes.</p>
+<h5 id="Input-Specification"><a href="#Input-Specification" class="headerlink" title="Input Specification:"></a>Input Specification:</h5><p>Each input file contains one test case. For each case, the first line gives 3 positive integers K (≤500, the threshold（阈值） of the amount of short phone calls), N (≤10^3, the number of different phone numbers), and M (≤10^5 , the number of phone call records). Then M lines of one day’s records are given, each in the format:</p>
+<p>caller receiver duration<br>where caller and receiver are numbered from 1 to N, and duration is no more than 1440 minutes in a day.</p>
+<h5 id="Output-Specification"><a href="#Output-Specification" class="headerlink" title="Output Specification:"></a>Output Specification:</h5><p>Print in each line all the detected suspects in a gang, in ascending order of their numbers. The gangs are printed in ascending order of their first members. The numbers in a line must be separated by exactly 1 space, and there must be no extra space at the beginning or the end of the line.</p>
+<p>If no one is detected, output None instead.</p>
+<h5 id="Sample-Input-1"><a href="#Sample-Input-1" class="headerlink" title="Sample Input 1:"></a>Sample Input 1:</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">5 15 31</span><br><span class="line">1 4 2</span><br><span class="line">1 5 2</span><br><span class="line">1 5 4</span><br><span class="line">1 7 5</span><br><span class="line">1 8 3</span><br><span class="line">1 9 1</span><br><span class="line">1 6 5</span><br><span class="line">1 15 2</span><br><span class="line">1 15 5</span><br><span class="line">3 2 2</span><br><span class="line">3 5 15</span><br><span class="line">3 13 1</span><br><span class="line">3 12 1</span><br><span class="line">3 14 1</span><br><span class="line">3 10 2</span><br><span class="line">3 11 5</span><br><span class="line">5 2 1</span><br><span class="line">5 3 10</span><br><span class="line">5 1 1</span><br><span class="line">5 7 2</span><br><span class="line">5 6 1</span><br><span class="line">5 13 4</span><br><span class="line">5 15 1</span><br><span class="line">11 10 5</span><br><span class="line">12 14 1</span><br><span class="line">6 1 1</span><br><span class="line">6 9 2</span><br><span class="line">6 10 5</span><br><span class="line">6 11 2</span><br><span class="line">6 12 1</span><br><span class="line">6 13 1</span><br></pre></td></tr></table></figure>
+<h5 id="Sample-Output-1"><a href="#Sample-Output-1" class="headerlink" title="Sample Output 1:"></a>Sample Output 1:</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3 5</span><br><span class="line">6</span><br></pre></td></tr></table></figure>
+<h5 id="Note"><a href="#Note" class="headerlink" title="Note:"></a>Note:</h5><p>In sample 1, although 1 had 9 records, but there were 7 distinct receivers, among which 5 and 15 both had conversations lasted more than 5 minutes in total. Hence 1 had made 5 short phone calls and didn’t exceed the threshold 5, and therefore is not a suspect.</p>
+<h5 id="Sample-Input-2"><a href="#Sample-Input-2" class="headerlink" title="Sample Input 2:"></a>Sample Input 2:</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">5 7 8</span><br><span class="line">1 2 1</span><br><span class="line">1 3 1</span><br><span class="line">1 4 1</span><br><span class="line">1 5 1</span><br><span class="line">1 6 1</span><br><span class="line">1 7 1</span><br><span class="line">2 1 1</span><br><span class="line">3 1 1</span><br></pre></td></tr></table></figure>
+<h5 id="Sample-Output-2"><a href="#Sample-Output-2" class="headerlink" title="Sample Output 2:"></a>Sample Output 2:</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">None</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;vector&gt;</span><br><span class="line">#include&lt;map&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">//suspect:&gt;K个short电话,总时长&lt;=5minutes，&lt;=0.2的人回电话</span><br><span class="line">//两个suspect互相都有通话属于一个帮派</span><br><span class="line">//按照第一个成员的number上升序输出帮派，每个帮派里按照成员number上升序输出</span><br><span class="line"></span><br><span class="line">vector&lt;int&gt;suspects;</span><br><span class="line">int cnt[1024][1024];  //记录通话</span><br><span class="line">int father[1024];</span><br><span class="line"></span><br><span class="line">int findFather(int x)&#123;</span><br><span class="line">	return x == father[x] ? x : father[x] = findFather(father[x]);  //路径压缩</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">	int K, N, M;</span><br><span class="line">	scanf(&quot;%d%d%d&quot;, &amp;K, &amp;N, &amp;M);</span><br><span class="line">	int caller, receiver, d;</span><br><span class="line">	for (int i = 0; i &lt; M; i++)&#123;</span><br><span class="line">		scanf(&quot;%d%d%d&quot;, &amp;caller, &amp;receiver, &amp;d);</span><br><span class="line">		cnt[caller][receiver] += d;</span><br><span class="line">	&#125;</span><br><span class="line">	//得到嫌疑人</span><br><span class="line">	for (int i = 1; i &lt;= N; i++)&#123;</span><br><span class="line">		int sum = 0, rsum = 0;</span><br><span class="line">		for (int j = 1; j &lt;= N; j++)&#123;</span><br><span class="line">			if (cnt[i][j]&gt;0 &amp;&amp; cnt[i][j] &lt;= 5)&#123;</span><br><span class="line">				sum++;</span><br><span class="line">				if (cnt[j][i] &gt; 0) rsum++;  //回电话人数</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		if (sum &gt; K)&#123;</span><br><span class="line">			suspects.push_back(i);</span><br><span class="line">			if ((1.0*rsum) / sum &gt; 0.2)suspects.pop_back();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	//找出帮派</span><br><span class="line">	for (int i = 1; i &lt; N; i++)father[i] = i;</span><br><span class="line">	int sz = suspects.size();</span><br><span class="line">	for (int i = 0; i &lt; sz; i++)&#123;</span><br><span class="line">		for (int j = i+1; j &lt; sz; j++)&#123;</span><br><span class="line">			if (cnt[suspects[i]][suspects[j]]&gt;0 &amp;&amp; cnt[suspects[j]][suspects[i]] &gt; 0)&#123; //嫌疑人间有关系</span><br><span class="line">				int f1 = findFather(suspects[i]);</span><br><span class="line">				int f2 = findFather(suspects[j]);</span><br><span class="line">				if (f1 != f2)&#123;</span><br><span class="line">					if (f1 &lt; f2)swap(f1, f2);</span><br><span class="line">					father[f1] = f2;   //值小的当老大，便于用map排序gang</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	map&lt;int, vector&lt;int&gt;&gt; mp;</span><br><span class="line">	for (int i = 0; i &lt; sz; i++)&#123;</span><br><span class="line">		int L = findFather(suspects[i]);</span><br><span class="line">		mp[L].push_back(suspects[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	if (mp.size() == 0)&#123;</span><br><span class="line">		printf(&quot;None\n&quot;);</span><br><span class="line">		return 0;</span><br><span class="line">	&#125;</span><br><span class="line">	for (auto x : mp)&#123;</span><br><span class="line">		sort(x.second.begin(), x.second.end());//gang内排序</span><br><span class="line">		int ts = x.second.size();</span><br><span class="line">		for (int i = 0; i &lt; ts; i++)&#123;</span><br><span class="line">			printf(&quot;%d%c&quot;, x.second[i], i == ts - 1 ? &apos;\n&apos; : &apos; &apos;);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>个人觉得这是25分里面最难的题，要筛嫌疑人，筛完还要并查集找帮派，还要合理处理排序。条件理解不清楚就做不出来，比如要注意是++total duration++，以及calling ++each other++，只有一方通话不算。</li>
+</ul>
+
     </article>
+    <!-- license  -->
+    
+        <div class="license-wrapper">
+            <p>原文作者：<a href="https://jmyok.github.io">BobJiang</a>
+            <p>原文链接：<a href="https://jmyok.github.io/2019/07/22/PAT1158/">https://jmyok.github.io/2019/07/22/PAT1158/</a>
+            <p>发表日期：<a href="https://jmyok.github.io/2019/07/22/PAT1158/">July 22nd 2019, 10:59:57 am</a>
+            <p>更新日期：<a href="https://jmyok.github.io/2019/07/22/PAT1158/">July 22nd 2019, 11:27:59 am</a>
+            <p>版权声明：本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
     
     <!-- paginator  -->
+    <ul class="post-paginator">
+        <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2019/07/22/PAT1159/" title= "PAT甲1159 Structure of a Binary Tree （30分）">
+                    <div class="nextTitle">PAT甲1159 Structure of a Binary Tree （30分）</div>
+                </a>
+            
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2019/02/28/PAT甲-1030-Travel-Plan-（30-分）-dijkstra模版/" title= "PAT甲-1030 Travel Plan （30 分）[dijkstra模版]">
+                    <div class="prevTitle">PAT甲-1030 Travel Plan （30 分）[dijkstra模版]</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
     
+    
+    <!-- partial('_partial/comment/changyan') -->
+    <!--PC版-->
+
+
+    
+    
+
+    <!-- 评论 -->
 </main>
             <!-- profile -->
             
@@ -460,6 +545,24 @@ ReLU弥补了前两者的缺陷，当z&gt;0时，梯度始终为1，从而提高
 </footer>
     </div>
     <!-- toc -->
+    
+    <div class="toc-wrapper" style=
+    
+
+
+
+
+
+
+
+top:50vh;
+
+    >
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Telefraud-Detection"><span class="toc-number">1.</span> <span class="toc-text">Telefraud Detection</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Input-Specification"><span class="toc-number">1.1.</span> <span class="toc-text">Input Specification:</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Output-Specification"><span class="toc-number">1.2.</span> <span class="toc-text">Output Specification:</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Sample-Input-1"><span class="toc-number">1.3.</span> <span class="toc-text">Sample Input 1:</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Sample-Output-1"><span class="toc-number">1.4.</span> <span class="toc-text">Sample Output 1:</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Note"><span class="toc-number">1.5.</span> <span class="toc-text">Note:</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Sample-Input-2"><span class="toc-number">1.6.</span> <span class="toc-text">Sample Input 2:</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Sample-Output-2"><span class="toc-number">1.7.</span> <span class="toc-text">Sample Output 2:</span></a></li></ol></li></ol>
+    </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>
     <div class="sidebar sidebar-hide">
@@ -747,6 +850,8 @@ jsonContent:
     
     </div>
     <!-- async load share.js -->
+    
+        <script src="/scripts/share.js" async></script>    
      
     </body>
 </html>

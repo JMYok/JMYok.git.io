@@ -346,28 +346,27 @@
     
     
     <article class="index-post">
-        <a class="abstract-title" href = "/2018/09/17/激活函数的选择/" >
+        <a class="abstract-title" href = "/2018/08/14/tensorflow识别MNIST/" >
             
-                <span>激活函数的选择</span>
+                <span>tensorflow识别MNIST</span>
         </a>
         <div class="abstract-content">
-            几种不同的激活函数g(x)：
-激活函数的选择：
-sigmoid函数和tanh函数比较：
-隐藏层：tanh函数的表现要好于sigmoid函数，因为tanh取值范围为[−1,+1]，输出分布在0值的附近，均值为0，从隐藏层到输出层数据起到了归一化（均值为0）的效果。
-输出层：对于二分类任务的输出取值为{0,1}，故一般会选择sigmoid函数。然而sigmoid和tanh函数在当|z|很大的时候，梯度会很小，在依据梯度的算法中，更新在后期会变得很慢。在实际应用中，要使|z|尽可能的落在0值附近。
-ReLU弥补了前两者的缺陷，当z&gt;0时，梯度始终为1，从而提高神经网络基于梯度算法的运算速...
+            数据准备简单的说，MNIST就是一组最基础的数据集，M代表Modified,NIST代表国家标准和技术研究所，包括从0~9的训练数字的图片，这个分类问题是机器学习最简单和最广泛使用的测试之一。
+1、引入MNIST数据集1from tensorflow.examples.tutorials.mnist import input_data
+从MNIST_data/中读取MNIST数据。这条语句在数据不存在时，会自动执行下载
+1mnist = input_data.read_data_sets(&quot;MNIST_data/&quot;, one_hot=True)
+查看训练数据的大小12...
         </div>
         <div class="abstract-post-meta">
             <!-- date  -->
             <div class="abstract-date">
-                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/09/17</span>
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/08/14</span>
             </div>
             <!-- tags  -->
             
             <div class= abstract-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "激活函数">激活函数</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "tensorflow">tensorflow</a>
     
 </div>
             
